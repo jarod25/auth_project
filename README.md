@@ -16,7 +16,7 @@
 
 ## Installation
 
-1. Clonez le projet en utilisant la commande suivante : `git clone https://github.com/votre-nom/votre-projet.git`
+1. Clonez le projet en utilisant la commande suivante : `git clone https://github.com/jarod25/auth_project.git`
 2. Installez les dépendances en utilisant la commande suivante : `npm install`
 3. Démarrez le serveur en utilisant la commande suivante : `npm start`
 
