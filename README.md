@@ -1,8 +1,8 @@
 # auth_project
-Projet d'authentification sécurisé en NodeJS avec JWT
+Projet d'authentification sécurisé en NodeJS avec JWT<br>
 
 
-Raphaël DANY
-Jarod KOLHER
-Simon NGUYEN 
-Giuliana ZEBI FABRIZIO
+Raphaël DANY<br>
+Jarod KOHLER<br>
+Simon NGUYEN<br>
+Giuliana ZEBI FABRIZIO<br>
