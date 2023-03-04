@@ -2,7 +2,7 @@
   "name": "auth_project",
   "version": "1.0.0",
   "description": "Projet d'authentification en NodeJS avec JWT",
-  "main": "server.js",
+  "main": "connexion github google/server.js",
   "dependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon connexion github google/server.js"
   },
   "repository": {
     "type": "git",
