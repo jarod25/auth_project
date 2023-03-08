@@ -6,8 +6,8 @@ const helmet = require('helmet');
 const db = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
-const authMiddleware = require('./middleware/authMiddleware');
-const errorMiddleware = require('./middleware/errorMiddleware');
+const authMiddleware = require('./middlewares/authMiddleware');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
 app.use(cors());
@@ -19,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 db.authenticate()
-  .then(() => console.log('Database connected'))
-  .catch((err) => console.log('Error: ' + err));
+    .then(() => console.log('Database connected...'))
+    .catch(err => console.log('Error: ' + err));
+
 
 
 app.use('/auth', authRoutes);

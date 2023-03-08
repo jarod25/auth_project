@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/user');
 
 const authMiddleware = async (req, res, next) => {
   try {
@@ -9,7 +9,7 @@ const authMiddleware = async (req, res, next) => {
     const user = await User.findOne({ _id: decoded._id, 'tokens.token': token });
 
     if (!user) {
-      throw new Error();
+      return new Error();
     }
     
     req.user = user;
