@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd0e616-7fb5-4c18-a436-625c3881cfb3" name="Changes" comment="ajout du front" />
+    <list default="true" id="bdd0e616-7fb5-4c18-a436-625c3881cfb3" name="Changes" comment="ajout du front (parce que l'autre avant a eu des problèmes)">
+      <change afterPath="$PROJECT_DIR$/back/sample.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/LogInComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/NavBarComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/SignUpComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/views/LoginSignupView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/AboutView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/HomeView.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,41 +34,55 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/front" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0a41ff07-9afc-4a46-b7da-922f9809bd08" />
+        <option name="url" value="git@github.com:jarod25/auth_project.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NujfWdi24p5l5UugaYVrNRrk1M" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.23&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/jarod/.nvm/versions/node/v16.17.1/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.1",
+    "javascript.nodejs.core.library.typings.version": "16.18.23",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/back/services" />
@@ -66,7 +94,7 @@
     <configuration name="back" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/back/package.json" />
       <command value="start" />
-      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.17.1/bin/node" />
+      <node-interpreter value="wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
@@ -98,6 +126,8 @@
       <workItem from="1680547113159" duration="3902000" />
       <workItem from="1680605507319" duration="2093000" />
       <workItem from="1680608014409" duration="315000" />
+      <workItem from="1680628389610" duration="110000" />
+      <workItem from="1680628518011" duration="3785000" />
     </task>
     <task id="LOCAL-00001" summary="ajout du front">
       <created>1680608039630</created>
@@ -131,7 +161,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/front" />
+    </ignored-roots>
     <MESSAGE value="ajout du front" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout du front" />
+    <MESSAGE value="ajout du front (parce que l'autre avant a eu des problèmes)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout du front (parce que l'autre avant a eu des problèmes)" />
   </component>
 </project>
