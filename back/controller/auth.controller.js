@@ -1,4 +1,4 @@
-const { User } = require('../models/user.model');
+const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -8,8 +8,10 @@ const secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
 
 const signup = async (req, res) => {
     try {
+        
         const { name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
+        console.log("test :",name, email, hashedPassword)
         const user = await User.create({ name, email, password: hashedPassword });
         const token = jwt.sign({ userId: user.id }, secret);
         res.json({ user, token });
@@ -30,7 +32,7 @@ const login = async (req, res) => {
         if (!isValidPassword) {
             return res.status(401).json({ error: 'Identifiants invalides.' });
         }
-        const token = jwt.sign({ userId: user.id }, secret);
+        const token = jwt.sign({ userId: user.id}, secret);
         res.json({ user, token });
     } catch (error) {
         console.error(error);
