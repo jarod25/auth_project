@@ -5,13 +5,17 @@ require('dotenv').config();
 
 const saltRounds = 10;
 const secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
-
 const signup = async (req, res) => {
     try {
-        
         const { name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        console.log("test :",name, email, hashedPassword)
+
+        // Check if user with the same email already exists
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ error: 'User with this email already exists.' });
+        }
+
         const user = await User.create({ name, email, password: hashedPassword });
         const token = jwt.sign({ userId: user.id }, secret);
         res.json({ user, token });
@@ -20,6 +24,7 @@ const signup = async (req, res) => {
         res.status(500).json({ error: 'Une erreur est survenue lors de la création de l\'utilisateur.' });
     }
 };
+
 
 const login = async (req, res) => {
     try {
