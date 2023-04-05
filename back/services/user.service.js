@@ -1,4 +1,6 @@
 const User = require('../models/user.model');
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 // Fonction pour créer un utilisateur
 async function createUser(userData) {
@@ -26,4 +28,18 @@ async function deleteUser(userId) {
     return await User.destroy({ where: { id: userId } });
 }
 
-module.exports = { createUser, getUserById, getTotalUsers, getAllUsers, updateUser, deleteUser };
+
+async function getUserProfile(token) {
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        if (!decoded) {
+            return null;
+        }
+        return await User.findByPk(decoded.id);
+    }
+    catch (error) {
+        return null;
+    }
+}
+
+module.exports = { createUser, getUserById, getTotalUsers, getAllUsers, updateUser, deleteUser, getUserProfile };

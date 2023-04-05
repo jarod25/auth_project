@@ -1,6 +1,5 @@
 const userService = require('../services/user.service');
 
-// Fonction pour créer un utilisateur
 async function createUser(req, res) {
     try {
         const newUser = await userService.createUser(req.body);
@@ -10,7 +9,6 @@ async function createUser(req, res) {
     }
 }
 
-// Fonction pour obtenir un utilisateur par son ID
 async function getUserById(req, res) {
     try {
         const userId = req.params.id;
@@ -25,4 +23,13 @@ async function getUserById(req, res) {
     }
 }
 
-module.exports = { createUser, getUserById };
+async function getUserProfile(req, res) {
+    const user = await userService.getUserProfile(req.query.token);
+    if (!user) {
+        res.status(404).json({ message: "L'utilisateur n'a pas été trouvé" });
+        return;
+    }
+    res.status(200).json(user);
+}
+
+module.exports = { createUser, getUserById, getUserProfile };

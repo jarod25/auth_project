@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const authRouter = require('./router/auth.router');
+const userRouter = require('./router/user.router');
+const adminRouter = require('./router/admin.router');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -12,11 +15,6 @@ require('./config/createDB');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
-// Routes
-const authRouter = require('./router/auth.router');
-const userRouter = require('./router/user.router');
-const adminRouter = require('./router/admin.router');
 
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
