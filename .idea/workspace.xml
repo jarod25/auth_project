@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd0e616-7fb5-4c18-a436-625c3881cfb3" name="Changes" comment="Modification service back">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back/services/auth.service.js" afterDir="false" />
+    <list default="true" id="bdd0e616-7fb5-4c18-a436-625c3881cfb3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/front/src/components/ConnexionComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/GithubRegisterComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/GoogleRegisterComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/controller/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/controller/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/controller/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/controller/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/router/user.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/router/user.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/LogInComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/LogInComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/SignUpComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/SignUpComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.23&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu/home/jarod/LCMDMA-correct&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu/home/jarod/auth_project/front/src/components&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -84,7 +83,11 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\jarod\auth_project\front\src\components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\jarod\auth_project\front\src\components" />
       <recent name="$PROJECT_DIR$/back/services" />
       <recent name="$PROJECT_DIR$/back/controller" />
       <recent name="$PROJECT_DIR$/back" />
@@ -130,6 +133,7 @@
       <workItem from="1680628518011" duration="3850000" />
       <workItem from="1680719257022" duration="1697000" />
       <workItem from="1680723285476" duration="6609000" />
+      <workItem from="1680730140615" duration="2014000" />
     </task>
     <task id="LOCAL-00001" summary="ajout du front">
       <created>1680608039630</created>
@@ -159,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680730036520</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Modification service back (y'a un fichier qui est pas parti)">
+      <created>1680730163719</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680730163719</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +194,7 @@
     <MESSAGE value="ajout du front" />
     <MESSAGE value="ajout du front (parce que l'autre avant a eu des problèmes)" />
     <MESSAGE value="Modification service back" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification service back" />
+    <MESSAGE value="Modification service back (y'a un fichier qui est pas parti)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification service back (y'a un fichier qui est pas parti)" />
   </component>
 </project>
