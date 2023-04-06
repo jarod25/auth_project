@@ -1,91 +1,80 @@
 <template>
   <main>
-    <v-card elevation="5" style="margin-top: 150px;">
+    <v-card elevation="5" style="margin-top: 150px">
       <div class="card-body">
-        <v-card-title class="login-title">
-          Connexion
-        </v-card-title>
+        <v-card-title class="login-title"> Connexion </v-card-title>
         <v-form @submit.prevent="submit">
           <v-text-field
-              v-model="login"
-              label="Pseudo"
-              name="login"
-              :rules="loginRules"
-              prepend-icon="mdi-account-circle"
-              type="text"
-              required
+            v-model="login"
+            label="Pseudo"
+            name="login"
+            :rules="loginRules"
+            prepend-icon="mdi-account-circle"
+            type="text"
+            required
           ></v-text-field>
           <v-text-field
-              v-model="password"
-              label="Mot de passe"
-              name="password"
-              prepend-icon="mdi-lock"
-              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              :rules="passwordRules"
-              :type="showPassword ? 'text' : 'password'"
-              required
-              @click:append="showPassword = !showPassword"
+            v-model="password"
+            label="Mot de passe"
+            name="password"
+            prepend-icon="mdi-lock"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="passwordRules"
+            :type="showPassword ? 'text' : 'password'"
+            required
+            @click:append="showPassword = !showPassword"
           ></v-text-field>
-          <br>
+          <br />
           <v-btn :disabled="invalid" type="submit">Se connecter</v-btn>
           <v-btn @click="reset">Annuler</v-btn>
         </v-form>
-        <br>
+        <br />
         <div id="connexionComponent">
           <GithubLogin name="Github"></GithubLogin>
         </div>
-        <br>
+        <br />
         <div id="connexionComponent">
           <GoogleLogin name="Google"></GoogleLogin>
         </div>
         <div>
-          <br>
+          <br />
           <router-link to="/register">Inscrivez-vous</router-link>
         </div>
       </div>
     </v-card>
     <v-snackbar
-        v-model="snackbar"
-        :timeout="-1"
-        :value="true"
-        absolute
-        bottom
-        :color="snackbarColor"
-        outlined
-        right
+      v-model="snackbar"
+      :timeout="-1"
+      :value="true"
+      absolute
+      bottom
+      :color="snackbarColor"
+      outlined
+      right
     >
       {{ snackbarText }}
-      <v-btn
-          text
-          @click="snackbar = false"
-      >
-        Fermer
-      </v-btn>
+      <v-btn text @click="snackbar = false"> Fermer </v-btn>
     </v-snackbar>
   </main>
 </template>
 
 <script>
-import GithubLogin from './GithubRegisterComponent.vue'
-import GoogleLogin from './GoogleRegisterComponent.vue'
+import GithubLogin from "./GithubRegisterComponent.vue";
+import GoogleLogin from "./GoogleRegisterComponent.vue";
 export default {
   name: "ConnexionComponent",
   components: {
     GithubLogin,
-    GoogleLogin
+    GoogleLogin,
   },
   data() {
     return {
       login: "",
       invalid: null,
-      loginRules: [
-        v => !!v || 'Un pseudo est requis',
-      ],
+      loginRules: [(v) => !!v || "Un pseudo est requis"],
       password: "",
       showPassword: false,
-      passwordRules: [
-        v => !!v || 'Un mot de passe est requis',
-      ],
+      passwordRules: [(v) => !!v || "Un mot de passe est requis"],
       snackbar: false,
       snackbarText: "",
       snackbarColor: "",
@@ -102,20 +91,22 @@ export default {
       this.snackbarText = message;
       this.snackbarColor = "error";
     },
-    submit: function() {
-      this.$store.dispatch('connexionUser', {
-        login: this.login,
-        password: this.password
-      }).then(response => {
-        if (response.error) {
-          this.errorRequest(response.message)
-        } else {
-          this.successRequest(response.message)
-        }
-      })
-          .catch(error => {
-            this.errorRequest(error.response)
-          });
+    submit: function () {
+      this.$store
+        .dispatch("connexionUser", {
+          login: this.login,
+          password: this.password,
+        })
+        .then((response) => {
+          if (response.error) {
+            this.errorRequest(response.message);
+          } else {
+            this.successRequest(response.message);
+          }
+        })
+        .catch((error) => {
+          this.errorRequest(error.response);
+        });
     },
     reset() {
       this.login = "";
@@ -126,6 +117,41 @@ export default {
 </script>
 
 <style scoped>
+.login-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
 
+.card-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+v-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+v-text-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+v-btn {
+  margin-right: 16px;
+}
+
+#connexionComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+router-link {
+  margin-top: 16px;
+}
 </style>
-

@@ -34,12 +34,15 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          console.log(response.headers);
-          const token = response.headers.authorization.split(" ")[1];
-          localStorage.setItem("token", token);
-          this.token = token;
-          console.log(this.token);
-          this.$router.push("/protected");
+          const token = response.data.token;
+          if (token) {
+            localStorage.setItem("token", token);
+            this.token = token;
+            console.log(this.token);
+            this.$router.push("/protected");
+          } else {
+            console.error("Token is missing in response body");
+          }
         })
         .catch((error) => {
           console.error(error);

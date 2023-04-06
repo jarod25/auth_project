@@ -19,11 +19,10 @@ const signup = async (req, res) => {
     }
 
     const user = await User.create({ name, email, password: hashedPassword });
-    const token = jwt.sign({ userId: user.id }, secret);
 
     // Add the token to the response header
-    res.set("Authorization", `Bearer ${token}`);
-    res.json({ user });
+    const token = jwt.sign({ userId: user.id }, secret);
+    res.json({ token }); // Send token in the response body
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -44,9 +43,7 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Identifiants invalides." });
     }
     const token = jwt.sign({ userId: user.id }, secret);
-    // Add the token to the response header
-    res.set("Authorization", `Bearer ${token}`);
-    res.json({ user });
+    res.json({ user, token }); // Send token in the response body
   } catch (error) {
     console.error(error);
     res

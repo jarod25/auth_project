@@ -1,28 +1,22 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const User = require("../models/user.model");
 
-function protect(req, res, next) {
-  // Récupérer le token d'authentification depuis les en-têtes de la requête
-  const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(" ")[1];
-
-  if (!token) {
-    // Si le token n'est pas présent, renvoyer une erreur d'authentification
-    return res
-      .status(401)
-      .json({ message: "Authorization header missing or invalid." });
-  }
-
+// Fait une fonction protect qui vérifie le token dans le header et renvoie un message d'erreur si le token n'est pas valide
+const protect = async (req, res, next) => {
   try {
-    // Vérifier la validité du token et récupérer les informations de l'utilisateur
+    const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.user;
+    const user = await User.findByPk(decoded.userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    req.user = user;
     next();
-  } catch (err) {
-    // Si le token est invalide, renvoyer une erreur d'authentification
-    return res.status(401).json({ message: "Invalid token." });
+  } catch (error) {
+    return res.status(401).json({ message: "Unauthorized" });
   }
-}
+};
 
 module.exports = {
   protect,
