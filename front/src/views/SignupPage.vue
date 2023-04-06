@@ -1,21 +1,33 @@
 <template>
   <div>
-    <h2>Signup</h2>
-    <form @submit.prevent="submit">
-      <label>
-        Name:
-        <input type="text" v-model="name" required />
-      </label>
-      <label>
-        Email:
-        <input type="email" v-model="email" required />
-      </label>
-      <label>
-        Password:
-        <input type="password" v-model="password" required />
-      </label>
-      <button type="submit">Signup</button>
-    </form>
+      <v-card elevation="5" style="margin-top: 150px;">
+          <div class="card-body">
+              <v-card-title class="login-title">
+                  Signup
+              </v-card-title>
+              <v-form @submit.prevent="submit">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" v-model="name" /> <br>
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" v-model="email" /> <br>
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" v-model="password" />
+                  <br>
+                  <v-btn type="submit">Signup</v-btn>
+              </v-form>
+              <br>
+              <g-signin-button
+                  :params="googleSignInParams"
+                  @success="onSignInSuccess"
+                  @error="onSignInError">
+                  Sign in with Google
+              </g-signin-button>
+              <div>
+                  <br>
+                  <router-link to="/login">Login</router-link>
+              </div>
+          </div>
+      </v-card>
   </div>
 </template>
 
@@ -28,6 +40,10 @@ export default {
       name: "",
       email: "",
       password: "",
+        googleSignInParams: {
+            client_id:
+                'YOUR_APP_CLIENT_ID.apps.googleusercontent.com'
+        },
     };
   },
   methods: {
@@ -51,6 +67,30 @@ export default {
         console.error(error);
       }
     },
+      onSignInSuccess(googleUser) {
+          const id_token = googleUser.getAuthResponse().id_token;
+          axios
+              .post("http://localhost:3000/auth/google", {
+                  id_token: id_token,
+              })
+              .then((response) => {
+                  const token = response.data.token;
+                  if (token) {
+                      localStorage.setItem("token", token);
+                      this.token = token;
+                      console.log(this.token);
+                      this.$router.push("/protected");
+                  } else {
+                      console.error("Token is missing in response body");
+                  }
+              })
+              .catch((error) => {
+                  console.error(error);
+              });
+      },
+      onSignInError(err) {
+          console.error(err);
+      },
   },
 };
 </script>

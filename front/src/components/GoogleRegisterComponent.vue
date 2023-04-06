@@ -1,6 +1,6 @@
 <template>
   <a @click="signin" class="btn btn-social btn-google">
-    <i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se connecter avec {{name}}
+    <i class="fa fa-google"></i>Connect with {{name}}
   </a>
 </template>
 
@@ -39,9 +39,6 @@ export default {
 
 <style scoped>
 
-.btn-google {
-  background-color: #333;
-  color: #fff;
-}
+
 
 </style>
