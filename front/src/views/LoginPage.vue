@@ -1,34 +1,20 @@
 <template>
   <div>
-      <v-card elevation="5" style="margin-top: 150px;">
-          <div class="card-body">
-              <v-card-title class="login-title">
-                  Login
-              </v-card-title>
-              <v-form @submit.prevent="handleSubmit">
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" v-model="email" /> <br>
-                  <label for="password">Password:</label>
-                  <input type="password" id="password" v-model="password" />
-                  <br>
-                  <v-btn type="submit">Login</v-btn>
-              </v-form>
-              <br>
-              <g-signin-button
-                  :params="googleSignInParams"
-                  @success="onSignInSuccess"
-                  @error="onSignInError">
-                  Log in with Google
-              </g-signin-button>
-              <div>
-                  <br>
-                  <router-link to="/signup">Sign Up</router-link>
-              </div>
-          </div>
-      </v-card>
+    <h1>Login</h1>
+    <form @submit.prevent="handleSubmit">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email" />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 
@@ -38,15 +24,10 @@ export default {
       email: "",
       password: "",
       token: null,
-        // See https://developers.google.com/identity/sign-in/web/reference#users
-        googleSignInParams: {
-          client_id:
-            'YOUR_APP_CLIENT_ID.apps.googleusercontent.com'
-      },
+      errorMessage: null,
     };
   },
-
-    methods: {
+  methods: {
     handleSubmit() {
       axios
         .post("http://localhost:3000/auth/login", {
@@ -66,82 +47,39 @@ export default {
         })
         .catch((error) => {
           console.error(error);
-        });
-    },
-    onSignInSuccess(googleUser) {
-      const id_token = googleUser.getAuthResponse().id_token;
-      axios
-        .post("http://localhost:3000/auth/google", {
-          id_token: id_token,
-        })
-        .then((response) => {
-          const token = response.data.token;
-          if (token) {
-            localStorage.setItem("token", token);
-            this.token = token;
-            console.log(this.token);
-            this.$router.push("/protected");
+          if (error.response && error.response.status === 429) {
+            this.errorMessage =
+              "Trop de tentatives de connexion. Veuillez réessayer dans quelques minutes.";
           } else {
-            console.error("Token is missing in response body");
+            this.errorMessage =
+              "Une erreur s'est produite lors de la connexion.";
           }
-        })
-        .catch((error) => {
-          console.error(error);
         });
     },
-    onSignInError(err) {
-      console.error(err);
-    },
+  },
+  mounted() {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      this.token = storedToken;
+      console.log(this.token);
+      this.$router.push("/protected");
+    }
   },
 };
 </script>
-
 <style>
-.login-title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+.alert {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
-
-#connexionComponent {
-  display: flex;
-  justify-content: center;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.v-card {
-  width: 400px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
-.v-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-input {
-  margin-bottom: 10px;
-  border-bottom: #333333 1px solid;;
-}
-
-.g-signin-button {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 3px;
-    background-color: #3c82f7;
-    color: #fff;
-    box-shadow: 0 3px 0 #0f69ff;
+.alert-danger {
+  color: #842029;
+  background-color: #f5c2c7;
+  border-color: #f5c2c7;
 }
 </style>

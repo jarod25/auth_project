@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <h1>Socket.io Example</h1>
+    <form @submit.prevent="sendMessage">
+      <input type="text" v-model="message" placeholder="Enter message" />
+      <button type="submit">Send</button>
+    </form>
+    <ul>
+      <li v-for="message in messages" :key="message">{{ message }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import io from "socket.io-client";
+
+export default {
+  data() {
+    return {
+      message: "",
+      messages: [],
+      socket: null, // Ajout de la propriété socket
+    };
+  },
+
+  mounted() {
+    this.socket = io("http://localhost:3000"); // Assignation de la propriété socket
+    this.socket.on("message", (data) => {
+      this.messages.push(data);
+    });
+  },
+
+  methods: {
+    sendMessage() {
+      this.socket.emit("message", this.message); // Utilisation de la même instance de socket
+      this.message = "";
+    },
+  },
+};
+</script>

@@ -4,6 +4,7 @@ import HomePage from "../views/HomePage.vue";
 import SignupPage from "../views/SignupPage.vue";
 import loginPage from "../views/LoginPage.vue";
 import ProtectedPage from "../views/ProtectedPage.vue";
+import Socket from "../views/SocketPage.vue";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
+  },
+  {
+    path: "/socket",
+    name: "Socket",
+    component: Socket,
   },
 ];
 
