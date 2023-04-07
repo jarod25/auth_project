@@ -35,11 +35,7 @@ export default {
     return {
       name: "",
       email: "",
-      password: "",
-        googleSignInParams: {
-            client_id:
-                'YOUR_APP_CLIENT_ID.apps.googleusercontent.com'
-        },
+      password: ""
     };
   },
   methods: {
