@@ -4,16 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_12_42__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_12_42__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_14_16__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_14_16__Changes_.xml" afterDir="false" />
+    <list default="true" id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="Update, Github et Goole fonctionne (normalement)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/mocha.tree.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GithubRegisterComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/GoogleRegisterComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/controller/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/controller/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/router/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/router/auth.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/LogInComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/SignUpComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/views/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/HomePage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/LoginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/SignupPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/SignupPage.vue" afterDir="false" />
     </list>
@@ -22,50 +25,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="0a41ff07-9afc-4a46-b7da-922f9809bd08" />
-        <option name="url" value="git@github.com:jarod25/auth_project.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2O3r8ZQorgNV0MBsGt2Ds3YTGiJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2O5gDg7GgnuHAnAjHzrX73TCGJg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.14.0&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.23&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu/home/jarod/LCMDMA-correct&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/jarod/.nvm/versions/node/v16.17.1/bin/node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
@@ -76,7 +63,7 @@
     <configuration name="Back" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/back/package.json" />
       <command value="start" />
-      <node-interpreter value="wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node" />
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.17.1/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
@@ -86,7 +73,7 @@
       <scripts>
         <script value="serve" />
       </scripts>
-      <node-interpreter value="wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node" />
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.17.1/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
@@ -99,11 +86,12 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="" />
-      <created>1680799954260</created>
+      <created>1680865510035</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1680799954260</updated>
-      <workItem from="1680799956831" duration="15657000" />
+      <updated>1680865510035</updated>
+      <workItem from="1680865512409" duration="65000" />
+      <workItem from="1680866159322" duration="1797000" />
     </task>
     <servers />
   </component>
@@ -120,5 +108,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Update, Github et Goole fonctionne (normalement)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update, Github et Goole fonctionne (normalement)" />
   </component>
 </project>

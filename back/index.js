@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const passport = require("passport");
 const authRouter = require("./router/auth.router");
 const userRouter = require("./router/user.router");
 const adminRouter = require("./router/admin.router");
@@ -43,6 +44,7 @@ app.use(
 
 app.use(limiter);
 app.use(hpp());
+app.use(passport.initialize());
 
 app.use("/auth", authRouter);
 app.use("/user", userRouter);

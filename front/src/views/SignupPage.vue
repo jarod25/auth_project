@@ -16,8 +16,8 @@
                   <v-btn type="submit">Signup</v-btn>
               </v-form>
               <br>
-            <button class="btn-google" @click="login('google')">Login with Google</button>
-            <button class="btn-github" @click="login('github')">Login with GitHub</button>
+              <button class="btn-google" @click="login('google')">Login with Google</button>
+              <button class="btn-github" @click="login('github')">Login with GitHub</button>
               <div>
                   <br>
                   Already have an account ? <router-link to="/login">Login</router-link>
@@ -63,30 +63,20 @@ export default {
         console.error(error);
       }
     },
-      onSignInSuccess(googleUser) {
-          const id_token = googleUser.getAuthResponse().id_token;
-          axios
-              .post("http://localhost:3000/auth/google", {
-                  id_token: id_token,
-              })
-              .then((response) => {
-                  const token = response.data.token;
-                  if (token) {
-                      localStorage.setItem("token", token);
-                      this.token = token;
-                      console.log(this.token);
-                      this.$router.push("/protected");
-                  } else {
-                      console.error("Token is missing in response body");
-                  }
-              })
-              .catch((error) => {
-                  console.error(error);
-              });
-      },
-      onSignInError(err) {
-          console.error(err);
+      login(provider) {
+          window.open(
+              `http://localhost:3000/auth/${provider}`,
+              "popup",
+              "width=600,height=600"
+          );
       },
   },
+    mounted() {
+        const token = localStorage.getItem("token");
+        if (token) {
+            this.token = token;
+            this.$router.push("/protected");
+        }
+    }
 };
 </script>

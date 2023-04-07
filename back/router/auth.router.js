@@ -2,6 +2,9 @@ const express = require("express");
 const authController = require("../controller/auth.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 const User = require("../models/user.model");
+const { authenticateGitHub, authenticateGoogle, authenticateGoogleCallback, authenticateGitHubCallback, verifyToken } = require('../controller/auth.controller');
+const passport = require('../services/auth.service');
+
 
 const router = express.Router();
 
@@ -24,6 +27,14 @@ router.get("/protected", authMiddleware.protect, async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
   }
+});
+
+router.get('/github', authenticateGitHub);
+router.get('/github/callback', passport.authenticate('github', { session: false }), authenticateGitHubCallback);
+router.get('/google', authenticateGoogle);
+router.get('/google/callback', passport.authenticate('google', { session: false }), authenticateGoogleCallback);
+router.get('/verify', verifyToken, (req, res) => {
+  res.json({ message: 'Token is valid' });
 });
 
 module.exports = router;

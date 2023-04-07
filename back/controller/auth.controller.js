@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const passport = require('passport');
 require("dotenv").config();
 
 const saltRounds = 10;
@@ -52,20 +53,72 @@ const login = async (req, res) => {
   }
 };
 
+function generateToken(user) {
+  const payload = { id: user.id };
+  const secret = process.env.JWT_SECRET;
+  const options = { expiresIn: '1d' };
+  return jwt.sign(payload, secret, options);
+}
+
+async function verifyToken(req, res, next) {
+  const token = req.query.token || req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ message: 'Authentication required' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findByPk(decoded.id);
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: 'Invalid token' });
+  }
+}
+async function authenticateGitHub(req, res) {
+  passport.authenticate('github', { session: false }, (err, user) => {
+    if (err || !user) {
+      return res.redirect('/login');
+    }
+
+    const token = generateToken(user);
+    res.redirect(`/dashboard?token=${token}`);
+  })(req, res);
+}
+
+async function authenticateGoogle(req, res) {
+  passport.authenticate('google', { scope: ['profile', 'email'], session: false })(req, res);
+}
+
+async function authenticateGoogleCallback(req, res) {
+  passport.authenticate('google', { session: false }, (err, user) => {
+    if (err || !user) {
+      return res.redirect('/login');
+    }
+
+    const token = generateToken(user);
+    res.redirect(`/dashboard?token=${token}`);
+  })(req, res);
+}
+
+async function authenticateGitHubCallback(req, res) {
+  passport.authenticate('github', { session: false }, (err, user) => {
+    if (err || !user) {
+      return res.redirect('/login');
+    }
+
+    const token = generateToken(user);
+    res.redirect(`/dashboard?token=${token}`);
+  })(req, res);
+}
+
 module.exports = {
-  signup,
   login,
+    signup,
+  authenticateGitHub,
+  authenticateGoogle,
+  authenticateGoogleCallback,
+    authenticateGitHubCallback,
+  verifyToken,
 };
-const authService = require("../services/auth.service");
 
-exports.signup = (req, res) => {
-  authService.signup(req.body).then((r) => {
-    res.status(200).json(r);
-  });
-};
-
-exports.login = (req, res) => {
-  authService.login(req.body).then((r) => {
-    res.status(200).json(r);
-  });
-};

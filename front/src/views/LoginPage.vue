@@ -14,8 +14,8 @@
                   <v-btn type="submit">Login</v-btn>
               </v-form>
               <br>
-              <button class="btn-google" @click="message('google')">Login with Google</button>
-              <button class="btn-github" @click="message('github')">Login with GitHub</button>
+              <button class="btn-google" @click="login('google')">Login with Google</button>
+              <button class="btn-github" @click="login('github')">Login with GitHub</button>
               <div>
                   <br>
                   Not register yet ? <router-link to="/signup">Sign Up</router-link>
@@ -68,7 +68,7 @@ export default {
           }
         });
     },
-    message(provider) {
+        login(provider) {
       window.open(
         `http://localhost:3000/auth/${provider}`,
         "popup",
