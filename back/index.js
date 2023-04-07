@@ -72,6 +72,14 @@ io.on("connection", (socket) => {
 
 const socketServer = io.listen(3001); // serveur Socket.io
 
+// Simon (Response-Caching)
+const cacheMiddleware = require('./middleware/cache.middleware.js');
+
+// temps = 10 secondes
+app.get('/cache', cacheMiddleware(10), (req, res) => {
+  res.send(new Date().toString());
+});
+
 console.log(
   "Server running on http://localhost:3000 and http://localhost:3001"
 );

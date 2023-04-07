@@ -6,6 +6,7 @@
     <div class="navbar__menu">
       <ul>
         <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/cache">Cache</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
         <li><router-link to="/signup">Signup</router-link></li>
       </ul>

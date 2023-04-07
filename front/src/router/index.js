@@ -6,6 +6,9 @@ import loginPage from "../views/LoginPage.vue";
 import ProtectedPage from "../views/ProtectedPage.vue";
 import Socket from "../views/SocketPage.vue";
 
+// Simon (Response-Caching)
+import CachePage from "../views/CachePage.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -37,6 +40,13 @@ const routes = [
     name: "Socket",
     component: Socket,
   },
+  
+  // Simon (Response-Caching)
+  {
+    path: '/cache',
+    name: 'CachePage',
+    component: CachePage,
+  }
 ];
 
 const router = new VueRouter({
