@@ -8,6 +8,11 @@ const secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
 const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res
+        .status(400)
+        .json({ error: "Veuillez fournir tous les champs requis." });
+    }
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Check if user with the same email already exists
@@ -34,6 +39,11 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ error: "Veuillez fournir tous les champs requis." });
+    }
     const user = await User.findOne({ where: { email } });
     if (!user) {
       return res.status(401).json({ error: "Identifiants invalides." });

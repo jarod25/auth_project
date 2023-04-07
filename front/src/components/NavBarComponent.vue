@@ -1,13 +1,15 @@
 <template>
   <div class="navbar">
     <div class="navbar__logo">
-      <img src="../assets/logo.png" alt="logo">
+      <img src="../assets/logo.png" alt="logo" />
     </div>
     <div class="navbar__menu">
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/login">Login</router-link></li>
         <li><router-link to="/signup">Signup</router-link></li>
+        <li><router-link to="/races">Races F1</router-link></li>
+        <li><router-link to="/socket">Socket</router-link></li>
       </ul>
     </div>
   </div>
@@ -16,8 +18,7 @@
 <script>
 export default {
   name: "NavBarComponent.vue",
-
-}
+};
 </script>
 
 <style scoped>
@@ -27,7 +28,6 @@ export default {
   align-items: center;
   background-color: #383737;
 }
-
 
 .navbar__logo img {
   width: 20%;

@@ -12,9 +12,9 @@
       </div>
       <button type="submit">Submit</button>
     </form>
+    <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 
@@ -24,6 +24,7 @@ export default {
       email: "",
       password: "",
       token: null,
+      errorMessage: null,
     };
   },
   methods: {
@@ -46,8 +47,39 @@ export default {
         })
         .catch((error) => {
           console.error(error);
+          if (error.response && error.response.status === 429) {
+            this.errorMessage =
+              "Trop de tentatives de connexion. Veuillez réessayer dans quelques minutes.";
+          } else {
+            this.errorMessage =
+              "Une erreur s'est produite lors de la connexion.";
+          }
         });
     },
   },
+  mounted() {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      this.token = storedToken;
+      console.log(this.token);
+      this.$router.push("/protected");
+    }
+  },
 };
 </script>
+<style>
+.alert {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.alert-danger {
+  color: #842029;
+  background-color: #f5c2c7;
+  border-color: #f5c2c7;
+}
+</style>
