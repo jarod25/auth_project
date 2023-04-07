@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     fetchData() {
-      fetch('/cache')
+      fetch('http://localhost:3000/cache')
         .then((response) => response.text())
         .then((data) => {
           this.message = data;

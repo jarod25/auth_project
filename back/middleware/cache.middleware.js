@@ -9,13 +9,17 @@ function cacheMiddleware(temps) {
     if (cachedBody) {
       res.send(cachedBody);
       return;
+
     } else {
       res.sendResponse = res.send;
+      
       res.send = (body) => {
         cache.put(key, body, temps * 1000);
         res.sendResponse(body);
+
       };
       next();
+
     }
   };
 }
