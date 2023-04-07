@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     user: null,
     token: localStorage.getItem("token") || "",
+    GOOGLE_CLIENT_ID: null,
+    GITHUB_CLIENT_ID: null,
   },
   getters: {
     user: state => state.user,
@@ -19,6 +21,10 @@ export default new Vuex.Store({
     setToken(state, token) {
       state.token = token;
     },
+    setEnv(state, env) {
+        state.GOOGLE_CLIENT_ID = env.GOOGLE_CLIENT_ID
+        state.GITHUB_CLIENT_ID = env.GITHUB_CLIENT_ID
+    }
   },
   actions: {
     signUp({commit}, user) {
@@ -34,6 +40,15 @@ export default new Vuex.Store({
           .then(response => response.json())
           .then(response => {
             commit('setUser', "toto")
+            return response
+          })
+          .catch(error => console.error('Error:', error))
+    },
+    takeEnv({commit}) {
+      return fetch('http://localhost:3000/env')
+          .then(response => response.json())
+          .then(response => {
+            commit('setEnv', response)
             return response
           })
           .catch(error => console.error('Error:', error))

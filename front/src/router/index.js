@@ -6,6 +6,8 @@ import loginPage from "../views/LoginPage.vue";
 import ProtectedPage from "../views/ProtectedPage.vue";
 import Socket from "../views/SocketPage.vue";
 import Races from "../views/RacesPage.vue";
+// Simon (Response-Caching)
+import CachePage from "../views/CachePage.vue";
 
 Vue.use(VueRouter);
 
@@ -33,15 +35,23 @@ const routes = [
       requiresAuth: true,
     },
   },
+  // JAROD (Socket.io)
   {
     path: "/socket",
     name: "Socket",
     component: Socket,
   },
+  // Raph (F1 API BIG DATA)
   {
     path: "/races",
     name: "Races",
     component: Races,
+  },
+  // Simon (Response-Caching)
+  {
+    path: "/cache",
+    name: "CachePage",
+    component: CachePage,
   },
 ];
 

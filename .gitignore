@@ -104,3 +104,5 @@ dist
 .tern-port
 code_secret_client_533646576751-s2qo52c991qcomivv1nk1ue9jm08ohen.apps.googleusercontent.com.json
 .docker
+/.vscode/
+/.idea/

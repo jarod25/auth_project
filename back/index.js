@@ -2,6 +2,7 @@ const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const passport = require("passport");
 const authRouter = require("./router/auth.router");
 const userRouter = require("./router/user.router");
 const adminRouter = require("./router/admin.router");
@@ -80,10 +81,17 @@ io.on("connection", (socket) => {
 
 const socketServer = io.listen(3001); // serveur Socket.io
 
+// Simon (Response-Caching)
+const cacheMiddleware = require("./middleware/cache.middleware.js");
+
+// temps = 10 secondes de mise en cache
+app.get("/cache", cacheMiddleware(10), (req, res) => {
+  const timestamp = new Date().toLocaleTimeString();
+  res.send(`La requête GET en cache ( 10 sec ) : ${timestamp}`);
+});
+
 console.log(
   "Server running on http://localhost:3000 and http://localhost:3001"
 );
-
-// je veux juste pourvoir exécuter le code de f1.js
 
 module.exports = server;

@@ -1,18 +1,34 @@
 <template>
   <div>
-    <h1>Login</h1>
-    <form @submit.prevent="handleSubmit">
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" />
+    <v-card elevation="5" style="margin-top: 150px">
+      <div class="card-body">
+        <v-card-title class="login-title"> Login </v-card-title>
+        <v-form @submit.prevent="handleSubmit">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" /> <br />
+          <label for="password">Password:</label>
+          <input type="password" id="password" v-model="password" />
+          <br />
+          <v-btn type="submit">Login</v-btn>
+        </v-form>
+        <br />
+        <button class="btn-google" @click="login('google')">
+          Login with Google
+        </button>
+        <button class="btn-github" @click="login('github')">
+          Login with GitHub
+        </button>
+        <div>
+          <br />
+          Not register yet ? <router-link to="/signup">Sign Up</router-link>
+          <br />
+          <br />
+          <div v-if="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-    <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    </v-card>
   </div>
 </template>
 <script>
@@ -48,26 +64,90 @@ export default {
         .catch((error) => {
           console.error(error);
           if (error.response && error.response.status === 429) {
-            this.errorMessage =
-              "Trop de tentatives de connexion. Veuillez réessayer dans quelques minutes.";
+            this.errorMessage = "Too many attempts, please try again later";
           } else {
-            this.errorMessage =
-              "Une erreur s'est produite lors de la connexion.";
+            this.errorMessage = "Invalid credentials";
           }
         });
     },
+    login(provider) {
+      window.open(
+        `http://localhost:3000/auth/${provider}`,
+        "popup",
+        "width=600,height=600"
+      );
+    },
   },
   mounted() {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      this.token = storedToken;
-      console.log(this.token);
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.token = token;
       this.$router.push("/protected");
     }
   },
 };
 </script>
+
 <style>
+.login-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#connexionComponent {
+  display: flex;
+  justify-content: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.v-card {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.v-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin-bottom: 10px;
+  border-bottom: #333333 1px solid;
+}
+
+.btn-google {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+  margin: 5px;
+}
+
+.btn-github {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: rgb(118, 106, 225);
+  color: #fff;
+  box-shadow: 0 3px 0 rgb(77, 59, 225);
+  margin: 5px;
+}
+
 .alert {
   background-color: #f8d7da;
   border-color: #f5c6cb;

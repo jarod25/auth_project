@@ -1,7 +1,9 @@
 const User = require('../models/user.model');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
+const passport = require('passport');
+const GithubStrategy = require('passport-github2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 exports.login = async (req, res) => {
     try {
@@ -41,3 +43,65 @@ exports.signup = async (req, res) => {
     }
 }
 
+passport.use(
+    new GithubStrategy(
+        {
+            clientID: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            callbackURL: `${process.env.BASE_URL}/auth/github/callback`,
+        },
+        async (accessToken, refreshToken, profile, done) => {
+            try {
+                const [user] = await User.findOrCreate({
+                    where: { email: profile._json.email },
+                    defaults: {
+                        name: profile._json.name,
+                        avatar: profile._json.avatar_url,
+                        password: '',
+                    },
+                });
+
+                done(null, user);
+            } catch (err) {
+                done(err);
+            }
+        }
+    )
+);
+
+passport.use(
+    new GoogleStrategy(
+        {
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: `${process.env.BASE_URL}/auth/google/callback`,
+        },
+        async (accessToken, refreshToken, profile, done) => {
+            try {
+                const [user] = await User.findOrCreate({
+                    where: { email: profile._json.email },
+                    defaults: {
+                        name: profile._json.name,
+                        avatar: profile._json.picture,
+                        password: '',
+                    },
+                });
+
+                done(null, user);
+            } catch (err) {
+                done(err);
+            }
+        }
+    )
+);
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findByPk(id);
+    done(null, user);
+});
+
+module.exports = passport;
