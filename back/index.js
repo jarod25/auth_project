@@ -77,9 +77,10 @@ const socketServer = io.listen(3001); // serveur Socket.io
 // Simon (Response-Caching)
 const cacheMiddleware = require('./middleware/cache.middleware.js');
 
-// temps = 10 secondes
+// temps = 10 secondes de mise en cache
 app.get('/cache', cacheMiddleware(10), (req, res) => {
-  res.send(new Date().toString());
+  const timestamp = new Date().toLocaleTimeString();
+  res.send(`La requête GET en cache ( 10 sec ) : ${timestamp}`);
 });
 
 console.log(
