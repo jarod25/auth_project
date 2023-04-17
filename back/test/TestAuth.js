@@ -1,6 +1,6 @@
 const assert = require("assert");
 const request = require("supertest");
-const server = require("../index.js"); // Importer votre fichier index ici
+const server = require("../index.js");
 
 describe("Auth", () => {
   describe("POST /auth/signup", () => {
@@ -9,7 +9,7 @@ describe("Auth", () => {
         .post("/auth/signup")
         .send({
           name: "John Doe5",
-          email: "john6.doe@example.com",
+          email: "john5.doe@example.com",
           password: "password",
         })
         .expect(200);
