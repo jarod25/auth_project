@@ -85,50 +85,9 @@ async function verifyToken(req, res, next) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 }
-async function authenticateGitHub(req, res) {
-  passport.authenticate('github', { session: false }, (err, user) => {
-    if (err || !user) {
-      return res.redirect('/login');
-    }
-
-    const token = generateToken(user);
-    res.redirect(`/dashboard?token=${token}`);
-  })(req, res);
-}
-
-async function authenticateGoogle(req, res) {
-  passport.authenticate('google', { scope: ['profile', 'email'], session: false })(req, res);
-}
-
-async function authenticateGoogleCallback(req, res) {
-  passport.authenticate('google', { session: false }, (err, user) => {
-    if (err || !user) {
-      return res.redirect('/login');
-    }
-
-    const token = generateToken(user);
-    res.redirect(`/dashboard?token=${token}`);
-  })(req, res);
-}
-
-async function authenticateGitHubCallback(req, res) {
-  passport.authenticate('github', { session: false }, (err, user) => {
-    if (err || !user) {
-      return res.redirect('/login');
-    }
-
-    const token = generateToken(user);
-    res.redirect(`/dashboard?token=${token}`);
-  })(req, res);
-}
-
 module.exports = {
   login,
     signup,
-  authenticateGitHub,
-  authenticateGoogle,
-  authenticateGoogleCallback,
-    authenticateGitHubCallback,
   verifyToken,
 };
 
