@@ -16,8 +16,8 @@
                   <v-btn type="submit">Signup</v-btn>
               </v-form>
               <br>
-              <button class="btn-google" @click="login('google')">Login with Google</button>
-              <button class="btn-github" @click="login('github')">Login with GitHub</button>
+              <GoogleComponent />
+              <GithubComponent />
               <div>
                   <br>
                   Already have an account ? <router-link to="/login">Login</router-link>
@@ -29,8 +29,11 @@
 
 <script>
 import axios from "axios";
+import GithubComponent from "@/components/GithubComponent.vue";
+import GoogleComponent from "@/components/GoogleComponent.vue";
 
 export default {
+    components: {GoogleComponent, GithubComponent},
   data() {
     return {
       name: "",
@@ -59,13 +62,6 @@ export default {
         console.error(error);
       }
     },
-      login(provider) {
-          window.open(
-              `http://localhost:3000/auth/${provider}`,
-              "popup",
-              "width=600,height=600"
-          );
-      },
   },
     mounted() {
         const token = localStorage.getItem("token");

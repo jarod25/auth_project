@@ -2,14 +2,16 @@ const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const passport = require("passport");
 const authRouter = require("./router/auth.router");
 const userRouter = require("./router/user.router");
 const adminRouter = require("./router/admin.router");
 const f1 = require("./BigData/f1");
+const fetch = (...args) =>
+    import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const app = express();
 const port = process.env.PORT || 3000;
 const hpp = require("hpp");
+require("dotenv").config();
 const server = app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
@@ -48,6 +50,48 @@ app.use(hpp());
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
+
+const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+
+if (!CLIENT_ID || !CLIENT_SECRET) {
+    console.log("Missing GITHUB_CLIENT_ID or GITHUB_CLIENT_SECRET in .env file");
+    process.exit(1);
+}
+
+app.get("/getAccessToken", async function (req, res) {
+    console.log(req.query.code);
+    const params = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`;
+  await fetch("https://github.com/login/oauth/access_token" +params, {
+    method: "POST",
+    headers: {
+        Accept: "application/json",
+    }
+  }).then((response) => {
+      console.log("response");
+      console.log(response);
+    return response.json();
+  }).then((data) => {
+      console.log("data");
+    console.log(data);
+    res.send(data);
+  });
+});
+
+app.get("/getUserData", async function (req, res) {
+    req.get("Authorization");
+    await fetch("https://api.github.com/user",  {
+        method: "GET",
+        headers: {
+            Authorization: req.get("Authorization"),
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+        res.json(data);
+    });
+});
 
 app.get("/races", async (req, res) => {
   const races = await f1.getRaces();

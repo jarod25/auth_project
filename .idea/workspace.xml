@@ -5,18 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="Update, Github et Goole fonctionne (normalement)">
+      <change afterPath="$PROJECT_DIR$/back/sample.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/GithubComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/src/components/GoogleComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_12_42_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_12_42__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_14_16_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_06_04_2023_14_16__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/controller/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/controller/auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/router/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/router/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/services/auth.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/LogInComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/SignUpComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/views/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/HomePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/NavBarComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/NavBarComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/plugins/allauth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/LoginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/LoginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/views/SignupPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/views/SignupPage.vue" afterDir="false" />
     </list>
@@ -24,6 +31,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,24 +55,30 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.23&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/jarod/.nvm/versions/node/v16.17.1/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.17.1",
+    "javascript.nodejs.core.library.typings.version": "16.18.23",
+    "last_opened_file_path": "/home/jarod/Documents/GitHub/auth_project/front/src/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/home/jarod/.nvm/versions/node/v16.17.1/bin/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/front/src/config" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.Front">
     <configuration name="Back" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/back/package.json" />
@@ -91,8 +111,22 @@
       <option name="presentableId" value="Default" />
       <updated>1680865510035</updated>
       <workItem from="1680865512409" duration="65000" />
-      <workItem from="1680866159322" duration="1797000" />
+      <workItem from="1680866159322" duration="2461000" />
+      <workItem from="1681974511550" duration="3212000" />
+      <workItem from="1681980076280" duration="3747000" />
+      <workItem from="1681992277199" duration="2749000" />
+      <workItem from="1681996248621" duration="5366000" />
+      <workItem from="1682002382506" duration="2485000" />
+      <workItem from="1682060659099" duration="20055000" />
     </task>
+    <task id="LOCAL-00001" summary="Update, Github et Goole fonctionne (normalement)">
+      <created>1680868386971</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680868386971</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,16 +1,21 @@
 <template>
   <div class="navbar">
     <div class="navbar__logo">
-      <img src="../assets/logo.png" alt="logo" />
+        <router-link to="/">
+      <img src="../assets/logo.png" alt="logo"/>
+        </router-link>
+    </div>
+      <div class="navbar__menu">
+        <ul>
+            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/cache">Cache</router-link></li>
+            <li><router-link to="/races">Races F1</router-link></li>
+            <li><router-link to="/socket">Socket</router-link></li>
+        </ul>
     </div>
     <div class="navbar__menu">
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/cache">Cache</router-link></li>
-        <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/signup">Signup</router-link></li>
-        <li><router-link to="/races">Races F1</router-link></li>
-        <li><router-link to="/socket">Socket</router-link></li>
+     <ul>
+          <li><router-link to="/login">Login</router-link></li>
       </ul>
     </div>
   </div>
@@ -28,6 +33,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   background-color: #383737;
+  padding: 1rem;
+  font-size: 1.2rem;
 }
 
 .navbar__logo img {
@@ -37,7 +44,6 @@ export default {
 .navbar__menu {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .navbar__menu ul {

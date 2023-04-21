@@ -12,12 +12,8 @@
           <v-btn type="submit">Login</v-btn>
         </v-form>
         <br />
-        <button class="btn-google" @click="login('google')">
-          Login with Google
-        </button>
-        <button class="btn-github" @click="login('github')">
-          Login with GitHub
-        </button>
+        <GoogleComponent />
+        <GithubComponent />
         <div>
           <br />
           Not register yet ? <router-link to="/signup">Sign Up</router-link>
@@ -33,8 +29,11 @@
 </template>
 <script>
 import axios from "axios";
+import GoogleComponent from "@/components/GoogleComponent.vue";
+import GithubComponent from "@/components/GithubComponent.vue";
 
 export default {
+    components: {GithubComponent, GoogleComponent},
   data() {
     return {
       email: "",
@@ -69,13 +68,6 @@ export default {
             this.errorMessage = "Invalid credentials";
           }
         });
-    },
-    login(provider) {
-      window.open(
-        `http://localhost:3000/auth/${provider}`,
-        "popup",
-        "width=600,height=600"
-      );
     },
   },
   mounted() {
@@ -126,26 +118,6 @@ export default {
 input {
   margin-bottom: 10px;
   border-bottom: #333333 1px solid;
-}
-
-.btn-google {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 3px;
-  background-color: #3c82f7;
-  color: #fff;
-  box-shadow: 0 3px 0 #0f69ff;
-  margin: 5px;
-}
-
-.btn-github {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 3px;
-  background-color: rgb(118, 106, 225);
-  color: #fff;
-  box-shadow: 0 3px 0 rgb(77, 59, 225);
-  margin: 5px;
 }
 
 .alert {
