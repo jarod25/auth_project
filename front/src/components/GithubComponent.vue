@@ -11,10 +11,9 @@ export default {
         const url = window.location.search;
         const params = new URLSearchParams(url);
         const code = params.get("code");
-        console.log(code);
         if (code && (localStorage.getItem("token") === null)) {
-            this.getAccessToken(code);
-            this.getUserData();
+          console.log(code);
+          this.getAccessToken(code);
         }
     },
     data() {
@@ -42,16 +41,11 @@ export default {
             await fetch("http://localhost:3000/getAccessToken?code=" + code, {
                 method: "GET"
             })
-            .then((response) => {
-                console.log("Response");
-                console.log(response);
-                response.json()
-            })
+                .then((response) => response.json())
             .then((data) => {
-                console.log("Data");
-                console.log(data);
                 if (data.access_token) {
                     localStorage.setItem("token", data.access_token);
+                    console.log("Token is saved in local storage");
                 } else {
                     console.error("Token is missing in response body");
                 }

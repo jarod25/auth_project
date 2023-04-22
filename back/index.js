@@ -68,18 +68,15 @@ app.get("/getAccessToken", async function (req, res) {
         Accept: "application/json",
     }
   }).then((response) => {
-      console.log("response");
-      console.log(response);
     return response.json();
   }).then((data) => {
-      console.log("data");
-    console.log(data);
     res.send(data);
   });
 });
 
 app.get("/getUserData", async function (req, res) {
     req.get("Authorization");
+    console.log(req.get("Authorization"));
     await fetch("https://api.github.com/user",  {
         method: "GET",
         headers: {
@@ -88,6 +85,7 @@ app.get("/getUserData", async function (req, res) {
     }).then((response) => {
         return response.json();
     }).then((data) => {
+        console.log("data");
         console.log(data);
         res.json(data);
     });
