@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="Update, Github et Goole fonctionne (normalement)">
+    <list default="true" id="30a1ce80-9ff9-4e8b-9dc0-781918bde591" name="Changes" comment="Modification github (fonctionne à 99% mais ddos le back)">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/controller/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/controller/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/router/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/router/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/models/user.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/GithubComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/GithubComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0a41ff07-9afc-4a46-b7da-922f9809bd08" />
+        <option name="url" value="git@github.com:jarod25/auth_project.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -38,25 +52,25 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "16.17.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.23",
-    "last_opened_file_path": "/home/jarod/Documents/GitHub/auth_project/front/src/config",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.14.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.24&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jarod/Documents/GitHub/auth_project/front/src/config&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/jarod/.nvm/versions/node/v16.14.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/jarod/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/231.8109.174/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/front/src/config" />
@@ -101,7 +115,9 @@
       <workItem from="1681996248621" duration="5366000" />
       <workItem from="1682002382506" duration="2485000" />
       <workItem from="1682060659099" duration="20055000" />
-      <workItem from="1682108078434" duration="275000" />
+      <workItem from="1682108078434" duration="333000" />
+      <workItem from="1682191507911" duration="7759000" />
+      <workItem from="1682249301320" duration="4436000" />
     </task>
     <task id="LOCAL-00001" summary="Update, Github et Goole fonctionne (normalement)">
       <created>1680868386971</created>
@@ -110,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680868386971</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Suppression de fonction inutiles">
+      <created>1682108385014</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682108385014</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +153,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Update, Github et Goole fonctionne (normalement)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update, Github et Goole fonctionne (normalement)" />
+    <MESSAGE value="Suppression de fonction inutiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Suppression de fonction inutiles" />
   </component>
 </project>

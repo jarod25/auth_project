@@ -106,3 +106,5 @@ code_secret_client_533646576751-s2qo52c991qcomivv1nk1ue9jm08ohen.apps.googleuser
 .docker
 /.vscode/
 /.idea/
+.idea
+.vscode
