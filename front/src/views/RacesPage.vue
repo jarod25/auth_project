@@ -69,17 +69,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.card {
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-}
-</style>

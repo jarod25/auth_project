@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Socket.io Example</h1>
+    <h1>Chat intégré</h1>
     <form @submit.prevent="sendMessage">
       <input type="text" v-model="message" placeholder="Enter message" />
       <v-btn class="mx-5" type="submit">Send</v-btn>

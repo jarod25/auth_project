@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Protected Page</h2>
+    <h1>Protected Page</h1>
     <p>You are authenticated!</p>
     <div v-if="user">
       <p>User email: {{ user.email }}</p>
