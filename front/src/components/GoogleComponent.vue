@@ -1,7 +1,8 @@
 <template>
-  <div>
-      <GoogleLogin class="btn-google" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><i class="bi bi-google"></i> Login with Google</GoogleLogin>
-  </div>
+     <div>
+        <GoogleLogin class="btn-google" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><i class="bi bi-google"></i> Login with Google</GoogleLogin>
+    </div>
+    <!-- <div class="g-signin2" data-onsuccess="onSuccess"></div> -->
 </template>
 
 <script>
@@ -14,6 +15,11 @@ export default {
            params: {
                client_id: "39499664859-66cms54vlknh36is96s20oc1c8vq09lp.apps.googleusercontent.com",
            },
+           renderParams: {
+                width: 250,
+                height: 50,
+                longtitle: true
+            }
         };
     },
     components: {

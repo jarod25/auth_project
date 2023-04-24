@@ -34,27 +34,27 @@ const protect = async (req, res, next) => {
       next();
     }
     if (token.startsWith("gho_")) {
-        const isValid = await verifyGitHubToken(token);
-        if (!isValid) {
-          throw new Error("Invalid GitHub token");
-        }
-        // récupérer les données de l'utilisateur
-        const response = await axios.get("https://api.github.com/user", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        });
-        const githubUser = response.data;
-        req.user = {
-            name: githubUser.name || githubUser.login,
-            email: githubUser.email,
-        }
-        next();
-      } else {
+      const isValid = await verifyGitHubToken(token);
+      if (!isValid) {
         throw new Error("Invalid GitHub token");
       }
+      // récupérer les données de l'utilisateur
+      const response = await axios.get("https://api.github.com/user", {
+          headers: {
+              Authorization: `Bearer ${token}`,
+          }
+      });
+      const githubUser = response.data;
+      req.user = {
+          name: githubUser.name || githubUser.login,
+          email: githubUser.email || "Your email is private",
+      }
+      next();
+    } else {
+      throw new Error("Invalid GitHub token");
     }
-    catch (error) {
+  }
+  catch (error) {
     return res.status(401).json({ message: "Vous n'avez pas l'autorisation d'accéder à cette page" });
   }
 };
