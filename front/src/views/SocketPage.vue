@@ -3,9 +3,9 @@
     <h1>Socket.io Example</h1>
     <form @submit.prevent="sendMessage">
       <input type="text" v-model="message" placeholder="Enter message" />
-      <button type="submit">Send</button>
+      <v-btn class="mx-5" type="submit">Send</v-btn>
     </form>
-    <ul>
+    <ul class="my-2">
       <li v-for="message in messages" :key="message">{{ message }}</li>
     </ul>
   </div>

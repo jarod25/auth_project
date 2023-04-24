@@ -14,7 +14,7 @@ const protect = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Vous n'avez pas l'autorisation d'accéder à cette page" });
   }
 };
 

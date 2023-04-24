@@ -5,7 +5,7 @@
         <v-card-title class="login-title"> Login </v-card-title>
         <v-form @submit.prevent="handleSubmit">
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" /> <br />
+          <input type="email" id="email" v-model="email"/> <br />
           <label for="password">Password:</label>
           <input type="password" id="password" v-model="password" />
           <br />
@@ -61,18 +61,24 @@ export default {
           }
         })
         .catch((error) => {
-          console.error(error);
           if (error.response && error.response.status === 429) {
             this.errorMessage = "Too many attempts, please try again later";
-          } else {
-            this.errorMessage = "Invalid credentials";
+          }
+          else if (error.response && error.response.status === 400) {
+              this.errorMessage = "Please fill all the fields";
+          }
+          else if (error.response && error.response.status === 401) {
+            this.errorMessage = "Wrong email or password";
+          }
+          else {
+            this.errorMessage = "Something went wrong, please try again later";
           }
         });
     },
   },
   mounted() {
     const token = localStorage.getItem("token");
-    if (token) {
+    if (token && token.isValid) {
       this.token = token;
       this.$router.push("/protected");
     }
@@ -101,7 +107,7 @@ export default {
 
 .v-card {
   width: 400px;
-  height: 500px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +132,7 @@ input {
   color: #721c24;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
-  border: 1px solid transparent;
+  border: 1px solid;
   border-radius: 0.25rem;
 }
 .alert-danger {

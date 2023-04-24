@@ -13,10 +13,17 @@
             <li><router-link to="/socket">Socket</router-link></li>
         </ul>
     </div>
-    <div class="navbar__menu">
-     <ul>
-          <li><router-link to="/login">Login</router-link></li>
-      </ul>
+    <div v-if="logged" class="navbar__menu">
+        <ul>
+            <li><router-link to="/protected">Protected</router-link></li>
+            <li><v-btn style="background-color: #333333;" variant="text" class="text-white" @click="logout">Logout</v-btn></li>
+        </ul>
+    </div>
+    <div v-else class="navbar__menu">
+        <ul>
+            <li><router-link to="/login">Login </router-link></li>
+            <li><router-link to="/signup"> Signup</router-link></li>
+        </ul>
     </div>
   </div>
 </template>
@@ -24,6 +31,29 @@
 <script>
 export default {
   name: "NavBarComponent.vue",
+    data() {
+        return {
+            logged : false,
+        };
+    },
+    methods: {
+      isLogged() {
+        this.logged = !!localStorage.getItem("token");
+      },
+        logout() {
+            localStorage.removeItem("token");
+            this.$router.push("/");
+        },
+    },
+    mounted() {
+        this.isLogged();
+    },
+    watch: {
+        $route() {
+            this.isLogged();
+        },
+    },
+
 };
 </script>
 

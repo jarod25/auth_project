@@ -1,6 +1,6 @@
 <template>
   <div>
-      <GoogleLogin class="btn-google" :params="params" :onSuccess="onSuccess" :onFailure="onFailure">Login with Google</GoogleLogin>
+      <GoogleLogin class="btn-google" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><i class="bi bi-google"></i> Login with Google</GoogleLogin>
   </div>
 </template>
 

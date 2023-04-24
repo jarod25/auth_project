@@ -51,6 +51,8 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 
+// Github
+
 const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
@@ -60,7 +62,6 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
 }
 
 app.get("/getAccessToken", async function (req, res) {
-    console.log(req.query.code);
     const params = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`;
   await fetch("https://github.com/login/oauth/access_token" +params, {
     method: "POST",
@@ -76,7 +77,6 @@ app.get("/getAccessToken", async function (req, res) {
 
 app.get("/getUserData", async function (req, res) {
     req.get("Authorization");
-    console.log(req.get("Authorization"));
     await fetch("https://api.github.com/user",  {
         method: "GET",
         headers: {
@@ -85,8 +85,6 @@ app.get("/getUserData", async function (req, res) {
     }).then((response) => {
         return response.json();
     }).then((data) => {
-        console.log("data");
-        console.log(data);
         res.json(data);
     });
 });

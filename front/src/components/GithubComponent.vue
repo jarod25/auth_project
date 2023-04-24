@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn-github" @click="login()">Login with Github</button>
+        <button class="btn-github" @click="login()"><i class="bi bi-github"></i> Login with Github</button>
     </div>
 </template>
 
@@ -12,7 +12,6 @@ export default {
         const params = new URLSearchParams(url);
         const code = params.get("code");
         if (code && (localStorage.getItem("token") === null)) {
-          console.log(code);
           this.getAccessToken(code);
         }
     },
@@ -24,6 +23,21 @@ export default {
     methods: {
         login() {
             window.location.assign("https://github.com/login/oauth/authorize?client_id=" + this.CLIENT_ID)
+        },
+        async getAccessToken(code) {
+            await fetch("http://localhost:3000/getAccessToken?code=" + code, {
+                method: "GET"
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.access_token) {
+                        localStorage.setItem("token", data.access_token);
+                        console.log("Token is saved in local storage");
+                        this.getUserData();
+                    } else {
+                        console.error("Token is missing in response body");
+                    }
+                });
         },
         async getUserData() {
             await fetch("http://localhost:3000/getUserData", {
@@ -43,21 +57,6 @@ export default {
                 console.log(userInfo);
                 this.$store.commit("setUser", userInfo);
                 this.$router.push("/protected");
-            });
-        },
-        async getAccessToken(code) {
-            await fetch("http://localhost:3000/getAccessToken?code=" + code, {
-                method: "GET"
-            })
-                .then((response) => response.json())
-            .then((data) => {
-                if (data.access_token) {
-                    localStorage.setItem("token", data.access_token);
-                    console.log("Token is saved in local storage");
-                    this.getUserData();
-                } else {
-                    console.error("Token is missing in response body");
-                }
             });
         }
     },
