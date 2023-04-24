@@ -12,13 +12,12 @@ router.post("/login", authController.login);
 router.get("/protected", authMiddleware.protect, async (req, res) => {
   try {
     if (!req.user) {
-      return res.status(401).json({ message: "test" });
+      return res.status(401).json({ message: "Unauthorized" });
     }
     const userId = req.user.id;
-    console.log("id :", userId);
-    const user = await User.findByPk(userId);
+    let user = await User.findByPk(userId);
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+       user = req.user;
     }
     res.json(user);
   } catch (error) {
