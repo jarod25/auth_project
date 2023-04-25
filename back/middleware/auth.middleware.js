@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const axios = require('axios');
+const axios = require("axios");
 require("dotenv").config();
 const User = require("../models/user.model");
 
@@ -22,44 +22,46 @@ const protect = async (req, res, next) => {
     let token = req.headers.authorization.split(" ")[1];
 
     if (!token) {
-      throw new Error("Token not found");
+      return res.status(401).json({ message: "Token not found" }); // 401 = Unauthorized
     }
+
     if (token.startsWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.")) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const user = await User.findByPk(decoded.userId);
       if (!user) {
-        throw new Error("User not found");
+        return res.status(401).json({ message: "User not found" });
       }
       req.user = user;
       next();
-    }
-    if (token.startsWith("gho_")) {
+    } else if (token.startsWith("gho_")) {
+      // Ajout de else if pour vérifier le préfixe "gho_"
       const isValid = await verifyGitHubToken(token);
       if (!isValid) {
-        throw new Error("Invalid GitHub token");
+        return res.status(401).json({ message: "Invalid GitHub token" });
       }
       // récupérer les données de l'utilisateur
       const response = await axios.get("https://api.github.com/user", {
-          headers: {
-              Authorization: `Bearer ${token}`,
-          }
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       const githubUser = response.data;
       req.user = {
-          name: githubUser.name || githubUser.login,
-          email: githubUser.email || "Your email is private",
-      }
+        name: githubUser.name || githubUser.login,
+        email: githubUser.email || "Your email is private",
+      };
       next();
     } else {
-      throw new Error("Invalid GitHub token");
+      return res.status(401).json({ message: "Invalid token" });
     }
-  }
-  catch (error) {
-    return res.status(401).json({ message: "Vous n'avez pas l'autorisation d'accéder à cette page" });
+  } catch (error) {
+    console.error(error);
+    return res.status(401).json({
+      message: "Vous n'avez pas l'autorisation d'accéder à cette page",
+    });
   }
 };
 
-
 module.exports = {
-  protect
+  protect,
 };

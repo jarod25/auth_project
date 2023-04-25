@@ -3,7 +3,6 @@ const authController = require("../controller/auth.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 const User = require("../models/user.model");
 
-
 const router = express.Router();
 
 router.post("/signup", authController.signup);
@@ -17,17 +16,17 @@ router.get("/protected", authMiddleware.protect, async (req, res) => {
     const userId = req.user.id;
     let user = await User.findByPk(userId);
     if (!user) {
-       user = req.user;
+      user = req.user;
     }
-    res.json(user);
+    return res.json(user);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
-router.get('/verify', authController.verifyToken, (req, res) => {
-  res.json({ message: 'Token is valid' });
+router.get("/verify", authController.verifyToken, (req, res) => {
+  res.json({ message: "Token is valid" });
 });
 
 module.exports = router;
