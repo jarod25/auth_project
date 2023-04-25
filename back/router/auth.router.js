@@ -25,8 +25,6 @@ router.get("/protected", authMiddleware.protect, async (req, res) => {
   }
 });
 
-router.get("/verify", authController.verifyToken, (req, res) => {
-  res.json({ message: "Token is valid" });
-});
+// router.get("/verify", authController.verifyToken);
 
 module.exports = router;

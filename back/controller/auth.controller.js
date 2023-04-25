@@ -26,7 +26,7 @@ const signup = async (req, res) => {
     const user = await User.create({ name, email, password: hashedPassword });
 
     // Add the token to the response header
-    const token = jwt.sign({ userId: user.id }, secret);
+    const token = jwt.sign({ name: user.name, email: user.email }, secret);
     res.json({ token }); // Send token in the response body
   } catch (error) {
     console.error(error);
@@ -52,7 +52,7 @@ const login = async (req, res) => {
     if (!isValidPassword) {
       return res.status(401).json({ error: "Identifiants invalides." });
     }
-    const token = jwt.sign({ userId: user.id }, secret);
+    const token = jwt.sign({ name: user.name, email: user.email }, secret);
     res.json({ user, token }); // Send token in the response body
   } catch (error) {
     console.error(error);
@@ -62,13 +62,6 @@ const login = async (req, res) => {
   }
 };
 
-function generateToken(user) {
-  const payload = { id: user.id };
-  const secret = process.env.JWT_SECRET;
-  const options = { expiresIn: '1d' };
-  return jwt.sign(payload, secret, options);
-}
-
 async function verifyToken(req, res, next) {
   const token = req.query.token || req.headers.authorization?.split(' ')[1];
 
@@ -77,13 +70,17 @@ async function verifyToken(req, res, next) {
   }
 
   try {
+    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // req.user = await User.findByPk(decoded.id);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findByPk(decoded.id);
+    req.user = await User.findByPk(decoded.email);
     next();
+    console.log(req.user)
   } catch (err) {
     return res.status(401).json({ message: 'Invalid token' });
   }
 }
+
 module.exports = {
   login,
     signup,

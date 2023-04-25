@@ -28,7 +28,7 @@ async function getRaces() {
     const response2022 = await axios(config2022);
     const races2022 = response2022.data.response;
     races.push(...races2022);
-    const transformedData = races.map((race) => {
+    return races.map((race) => {
       return {
         season: race.season,
         circuitName: race.circuit.name,
@@ -38,7 +38,6 @@ async function getRaces() {
       };
     });
 
-    return transformedData;
   } catch (error) {
     console.error(error);
     return null;

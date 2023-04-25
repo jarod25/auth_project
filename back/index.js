@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const authRouter = require("./router/auth.router");
 const userRouter = require("./router/user.router");
-const adminRouter = require("./router/admin.router");
 const f1 = require("./BigData/f1");
 const fetch = (...args) =>
     import("node-fetch").then(({ default: fetch }) => fetch(...args));
@@ -49,7 +48,6 @@ app.use(hpp());
 
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
-app.use("/admin", adminRouter);
 
 // Github
 
