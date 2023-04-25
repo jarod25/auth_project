@@ -27,7 +27,7 @@
 
 ## Utilisation
 
-Une fois le serveur démarré, vous pouvez accéder à l'application en ouvrant votre navigateur et en visitant l'URL suivante :<br> `http://localhost:8000` (peut changer en fonction des processus déjà lancés sur votre PC)
+Une fois le serveur démarré, vous pouvez accéder à l'application en ouvrant votre navigateur et en visitant l'URL suivante :<br> `http://localhost:8080` (peut changer en fonction des processus déjà lancés sur votre PC)
 
 ## Auteurs
 
