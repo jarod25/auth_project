@@ -39,6 +39,7 @@ export default {
         // Vérifier si la réponse contient des données avant de les stocker dans la variable user
         if (response.data && typeof response.data === "object") {
           this.user = response.data;
+          this.$store.state.user = this.user;
         } else {
           console.error("Invalid user data");
         }

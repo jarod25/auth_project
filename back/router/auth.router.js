@@ -17,7 +17,6 @@ router.get("/protected", authMiddleware.protect, async (req, res) => {
     let user = await User.findByPk(req.email);
     if (!user) user = req.user;
 
-    console.log("\n\n\n==================================================", user)
     return res.json(user);
   } catch (error) {
     console.error(error);
