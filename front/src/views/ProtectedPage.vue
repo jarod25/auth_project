@@ -29,8 +29,6 @@ export default {
       this.$router.push("/login");
       return;
     }
-
-    console.log(token)
     axios
       .get("http://localhost:3000/auth/protected", {
         headers: {
