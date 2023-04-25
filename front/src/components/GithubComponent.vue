@@ -46,13 +46,7 @@ export default {
                 }
             })
             .then((response) => response.json())
-            .then((data) => {
-                const userInfo = {
-                    name: data.name,
-                    email: data.email,
-                    token: localStorage.getItem("token")
-                };
-                this.$store.commit("setUser", userInfo);
+            .then(() => {
                 this.$router.push("/protected");
             });
         }

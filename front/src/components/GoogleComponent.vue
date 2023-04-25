@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import jwt_decode from "jwt-decode";
 
 export default {
     name: "GoogleComponent",
@@ -33,7 +32,6 @@ export default {
     },
     methods: {
         handleCallbackResponse(response) {
-            this.$store.state.user = jwt_decode(response.credential);
             localStorage.setItem("token", response.credential)
             this.$router.push("/protected");
         },
