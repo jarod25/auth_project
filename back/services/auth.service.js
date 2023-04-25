@@ -2,25 +2,47 @@ const User = require('../models/user.model');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-var secret = process.env.JWT_SECRET;
+var secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
 
-exports.login = async (req, res) => {
+exports.log = async (data, res) => {
     try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ where: { email } });
-        if (!user) {
-            return res.status(401).json({ error: 'Identifiants invalides.' });
+
+        const { email, password } = data;
+        if (!email || !password) {
+            throw {
+                code: 400,
+                message: "Veuillez fournir tous les champs requis."
+            };
         }
+
+        const user = await User.findByPk(email);
+
+        if (!user) {
+            throw {
+                code: 401,
+                message: "Identifiants invalides."
+              };
+        }
+
         const isValidPassword = await bcrypt.compare(password, user.password);
         if (!isValidPassword) {
-            return res.status(401).json({ error: 'Identifiants invalides.' });
+            throw {
+                code: 401,
+                message: "Identifiants invalides."
+              };
         }
-        const token = jwt.sign({ userId: user.id}, secret);
-        res.json({ user, token });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Une erreur est survenue lors de la connexion.' });
+
+        const token = jwt.sign({ name: user.name, email: user.email }, secret);
+        return (user, token); // Send token in the response body
+
     }
+    catch (error) {
+        console.error(error);
+        throw {
+            code: 500,
+            message: "Une erreur est survenue lors de la connexion."
+          };
+      }
 };
 
 exports.register = async (data) => {
