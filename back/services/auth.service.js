@@ -1,6 +1,7 @@
 const User = require('../models/user.model');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+require("dotenv").config();
 
 var secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
 
@@ -33,7 +34,10 @@ exports.log = async (data, res) => {
         }
 
         const token = jwt.sign({ name: user.name, email: user.email }, secret);
-        return (user, token); // Send token in the response body
+        return {
+            user: user,
+            token: token
+        }; // Send token in the response body
 
     }
     catch (error) {

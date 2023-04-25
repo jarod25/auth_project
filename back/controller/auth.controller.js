@@ -1,8 +1,4 @@
-const User = require("../models/user.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { register, log } = require("../services/auth.service");
-require("dotenv").config();
 
 async function signup(req, res) {
   try {
@@ -16,9 +12,12 @@ async function signup(req, res) {
 
 const login = async (req, res) => {
   try {
-    const [user, token] = await log(req.body);
+    const result = await log(req.body);
+    const user = result.user;
+    const token = result.token;
     res.json({ user, token }); // Send token in the response body
   } catch (error) {
+    console.log(error)
     res.status(error.code).json({ error: error.message });
   }
 };
