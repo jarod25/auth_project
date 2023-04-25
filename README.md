@@ -16,18 +16,23 @@
 
 ## Installation
 
-1. Clonez le projet en utilisant la commande suivante : `git clone https://github.com/jarod25/auth_project.git`
-2. Installez les dépendances en utilisant la commande suivante : `npm install` (à faire dans le dossier 'back' et dans le dossier 'front'
-3. Démarrez le serveur en utilisant la commande suivante : `npm start` pour le back, `npm run serve` pour le front
+1. Clonez le projet :
+   - Soit : `git clone https://github.com/jarod25/auth_project.git` (clone en http)
+   - Soit : `git clone git@github.com:jarod25/auth_project.git` (clone en ssh)
+   <br>**Attention** : Vous devez avoir installé git sur votre machine pour pouvoir cloner le projet et avoir un compte GitHub pour pouvoir cloner le projet en ssh
+   <br><br>
+2. Assurez vous d'avoir installé Node.js v16.14.x minimum, npm v9.6.5 et vuejs v5.0.8 minimum sur votre machine
+3. Installez les dépendances en utilisant la commande suivante : `npm install` (à faire dans le dossier 'back' et dans le dossier 'front')
+4. Démarrez le serveur en utilisant les commande suivante : `npm start` pour le back, `npm run serve` pour le front
 
 ## Utilisation
 
-Une fois le serveur démarré, vous pouvez accéder à l'application en ouvrant votre navigateur et en visitant l'URL suivante : `http://localhost:8000` (peut changer en fonction des processus déjà lancés sur votre PC)
+Une fois le serveur démarré, vous pouvez accéder à l'application en ouvrant votre navigateur et en visitant l'URL suivante :<br> `http://localhost:8000` (peut changer en fonction des processus déjà lancés sur votre PC)
 
 ## Auteurs
 
 Ce projet a été développé en collaboration par :
-- Dany Raphael
-- Godail--Fabrizio Giuliana
-- Kohler Jarod
-- Nguyen Simon
+- [Dany Raphael](https://github.com/Rdany-iut90)
+- [Godail--Fabrizio Giuliana](https://github.com/giuliana-fabrizio)
+- [Kohler Jarod](https://github.com/jarod25)
+- [Nguyen Simon](https://github.com/Snguyen70)
