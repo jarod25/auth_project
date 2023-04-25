@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-var secret = process.env.JWT_SECRET;
+var secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
 
 exports.log = async (data) => {
     try {
@@ -12,7 +12,7 @@ exports.log = async (data) => {
         if (!email || !password) {
             throw {
                 code: 400,
-                message: "Please provide all fields."
+                message: "Veuillez fournir tous les champs requis."
             };
         }
 
@@ -21,7 +21,7 @@ exports.log = async (data) => {
         if (!user) {
             throw {
                 code: 401,
-                message: "Wrong user"
+                message: "Identifiants invalides."
               };
         }
 
@@ -29,7 +29,7 @@ exports.log = async (data) => {
         if (!isValidPassword) {
             throw {
                 code: 401,
-                message: "Wrong password"
+                message: "Identifiants invalides."
               };
         }
 
@@ -41,15 +41,11 @@ exports.log = async (data) => {
 
     }
     catch (error) {
-        console.error(error);
-        if (error.code !== 500) {
-            throw error;
-        } else {
-            throw {
-                code: 500,
-                message: "Server error"
-              };
-        }
+        if (typeof error === 'object') throw error;
+        throw {
+            code: 500,
+            message: "Une erreur est survenue lors de la connexion."
+          };
       }
 };
 
@@ -61,7 +57,7 @@ exports.register = async (data) => {
         if (!name || !email || !password) {
           throw {
             code: 400,
-            message: "Please provide all fields."
+            message: "Veuillez fournir tous les champs requis."
           };
         }
 
@@ -81,14 +77,10 @@ exports.register = async (data) => {
         return jwt.sign({ name: user.name, email: user.email }, secret);
       }
       catch (error) {
-        console.error(error);
-          if (error.code !== 500) {
-              throw error;
-          } else {
-              throw {
-                  code: 500,
-                  message: "Server error"
-              };
-          }
+        if (typeof error === 'object') throw error;
+        throw {
+            code: 500,
+            message: "Une erreur est survenue lors de la création de l'utilisateur"
+          };
       }
-}
+};

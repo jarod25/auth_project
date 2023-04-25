@@ -22,8 +22,13 @@ const login = async (req, res) => {
   }
 };
 
+async function protect(req, res) {
+  res.json(req.user);
+}
+
 module.exports = {
   login,
   signup,
+  protect
 };
 

@@ -29,6 +29,8 @@ export default {
       this.$router.push("/login");
       return;
     }
+
+    console.log(token)
     axios
       .get("http://localhost:3000/auth/protected", {
         headers: {
@@ -37,12 +39,8 @@ export default {
       })
       .then((response) => {
         // Vérifier si la réponse contient des données avant de les stocker dans la variable user
-        if (response.data && typeof response.data === "object") {
-          this.user = response.data;
-          this.$store.commit("setUser", this.user);
-        } else {
-          console.error("Invalid user data");
-        }
+        this.user = response.data;
+        this.$store.commit("setUser", this.user);
       })
       .catch((error) => {
         console.error(error);
