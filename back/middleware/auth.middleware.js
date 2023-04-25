@@ -28,7 +28,7 @@ const protect = async (req, res, next) => {
 
     if (token.startsWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.")) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await User.findByPk(decoded.userId);
+      const user = await User.findByPk(decoded.email);
       if (!user) {
         return res.status(401).json({ message: "User not found" });
       }

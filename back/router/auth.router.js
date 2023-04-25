@@ -13,18 +13,16 @@ router.get("/protected", authMiddleware.protect, async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
-    const userId = req.user.id;
-    let user = await User.findByPk(userId);
-    if (!user) {
-      user = req.user;
-    }
+
+    let user = await User.findByPk(req.email);
+    if (!user) user = req.user;
+
+    console.log("\n\n\n==================================================", user)
     return res.json(user);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
-
-// router.get("/verify", authController.verifyToken);
 
 module.exports = router;
