@@ -1,59 +1,43 @@
 <template>
-     <div>
-        <GoogleLogin class="btn-google" :params="params" :onSuccess="onSuccess" :onFailure="onFailure"><i class="bi bi-google"></i> Login with Google</GoogleLogin>
+    <div>
+        <button id="googleButton"></button>
     </div>
-    <!-- <div class="g-signin2" data-onsuccess="onSuccess"></div> -->
 </template>
 
 <script>
-import GoogleLogin from "vue-google-login";
+import jwt_decode from "jwt-decode";
 
 export default {
     name: "GoogleComponent",
-    data() {
-        return {
-           params: {
-               client_id: "39499664859-66cms54vlknh36is96s20oc1c8vq09lp.apps.googleusercontent.com",
-           },
-           renderParams: {
-                width: 250,
-                height: 50,
-                longtitle: true
-            }
-        };
+    created() {
+        if (typeof window.google !== "undefined") {
+            // Votre code pour utiliser la bibliothèque Google ici
+            window.google.accounts.id.initialize({
+                client_id: "945612893828-avg8vr8uk0nh599cg7gmdno57n8lc6rv.apps.googleusercontent.com",
+                callback: this.handleCallbackResponse,
+            });
+        } else {
+            console.log("La bibliothèque Google n'est pas chargée");
+        }
     },
-    components: {
-        GoogleLogin,
+    mounted() {
+        window.google.accounts.id.renderButton(
+            document.getElementById("googleButton"),
+            {
+                theme: "filled_blue",
+                text: "login with google",
+                size: "large",
+                shape: "rectangular",
+                logo_alignment: "left",
+            }
+        );
     },
     methods: {
-        onSuccess(googleUser) {
-            console.log(googleUser);
-            const token = googleUser.getAuthResponse().id_token;
-            console.log(token);
+        handleCallbackResponse(response) {
+            this.$store.state.user = jwt_decode(response.credential);
+            localStorage.setItem("token", response.credential)
             this.$router.push("/protected");
-        },
-        onFailure(error) {
-            console.log(error);
         },
     },
 }
 </script>
-
-<style>
-
-.btn-google {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 3px;
-    background-color: #3c82f7;
-    color: #fff;
-    box-shadow: 0 3px 0 #0f69ff;
-    margin: 5px;
-}
-
-.btn-google:hover {
-    background-color: #0f69ff;
-}
-
-
-</style>

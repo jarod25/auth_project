@@ -5,9 +5,9 @@
         <v-card-title class="login-title"> Login </v-card-title>
         <v-form @submit.prevent="handleSubmit">
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email"/> <br />
+          <input type="email" id="email" v-model="email" autocomplete/> <br />
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" />
+          <input type="password" id="password" v-model="password" autocomplete/>
           <br />
           <v-btn type="submit">Login</v-btn>
         </v-form>
@@ -54,7 +54,6 @@ export default {
           if (token) {
             localStorage.setItem("token", token);
             this.token = token;
-            console.log(this.token);
             this.$router.push("/protected");
           } else {
             console.error("Token is missing in response body");

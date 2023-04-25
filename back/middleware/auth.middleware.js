@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const axios = require("axios");
 require("dotenv").config();
 const User = require("../models/user.model");
+const jwt_decode = require("jwt-decode");
 
 const verifyGitHubToken = async (token) => {
   try {
@@ -48,10 +49,18 @@ const protect = async (req, res, next) => {
       const githubUser = response.data;
       req.user = {
         name: githubUser.name || githubUser.login,
-        email: githubUser.email || "Your email is private",
+        email: githubUser.email || "Your email on Github is private",
       };
       next();
-    } else {
+    } else if (token.startsWith("eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg2OTY5YWVjMzdhNzc4MGYxODgwNzg3NzU5M2JiYmY4Y2Y1ZGU1Y2UiLCJ0eXAiOiJKV1QifQ.")) {
+        const decoded = jwt_decode(token);
+        req.user = {
+            name: decoded.name,
+            email: decoded.email
+        }
+        next();
+    }
+    else {
       return res.status(401).json({ message: "Invalid token" });
     }
   } catch (error) {

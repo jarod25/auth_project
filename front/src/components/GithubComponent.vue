@@ -32,7 +32,6 @@ export default {
                 .then((data) => {
                     if (data.access_token) {
                         localStorage.setItem("token", data.access_token);
-                        console.log("Token is saved in local storage");
                         this.getUserData();
                     } else {
                         console.error("Token is missing in response body");
@@ -48,13 +47,11 @@ export default {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 const userInfo = {
                     name: data.name,
                     email: data.email,
                     token: localStorage.getItem("token")
                 };
-                console.log(userInfo);
                 this.$store.commit("setUser", userInfo);
                 this.$router.push("/protected");
             });
