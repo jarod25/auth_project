@@ -54,6 +54,7 @@ export default {
           if (token) {
             localStorage.setItem("token", token);
             this.token = token;
+            this.$store.state.user = response.data.user;
             this.$router.push("/protected");
           } else {
             console.error("Token is missing in response body");
@@ -92,10 +93,6 @@ export default {
   font-weight: bold;
 }
 
-#connexionComponent {
-  display: flex;
-  justify-content: center;
-}
 
 .card-body {
   display: flex;

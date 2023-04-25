@@ -11,7 +11,6 @@ export default {
     name: "GoogleComponent",
     created() {
         if (typeof window.google !== "undefined") {
-            // Votre code pour utiliser la bibliothèque Google ici
             window.google.accounts.id.initialize({
                 client_id: "945612893828-avg8vr8uk0nh599cg7gmdno57n8lc6rv.apps.googleusercontent.com",
                 callback: this.handleCallbackResponse,

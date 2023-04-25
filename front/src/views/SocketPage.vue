@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Chat intégré</h1>
+    <h1>Something to tell</h1>
     <form @submit.prevent="sendMessage">
       <input type="text" v-model="message" placeholder="Enter message" />
       <v-btn class="mx-5" type="submit">Send</v-btn>
@@ -25,6 +25,11 @@ export default {
 
   mounted() {
     this.socket = io("http://localhost:3000"); // Assignation de la propriété socket
+    if (this.$store.state.user){
+        this.socket.on("connect", () => {
+            this.socket.emit("message", "Hello " + this.$store.state.user.name);
+        });
+    }
     this.socket.on("message", (data) => {
       this.messages.push(data);
     });
