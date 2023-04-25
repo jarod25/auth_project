@@ -80,7 +80,7 @@ export default {
                   this.errorMessage = "Internal server error";
               }
               else {
-                  this.errorMessage = "Something went wrong";
+                  this.errorMessage =  "Something went wrong, please try again later";
               }
           });
     },

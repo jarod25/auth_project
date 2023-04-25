@@ -19,9 +19,9 @@
           Not register yet ? <router-link to="/signup">Sign Up</router-link>
           <br />
           <br />
-          <div v-if="errorMessage" class="alert alert-danger">
-            {{ errorMessage }}
-          </div>
+        </div>
+        <div v-if="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
         </div>
       </div>
     </v-card>

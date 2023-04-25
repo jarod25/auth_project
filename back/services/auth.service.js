@@ -3,16 +3,16 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-var secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
+var secret = process.env.JWT_SECRET;
 
-exports.log = async (data, res) => {
+exports.log = async (data) => {
     try {
 
         const { email, password } = data;
         if (!email || !password) {
             throw {
                 code: 400,
-                message: "Veuillez fournir tous les champs requis."
+                message: "Please provide all fields."
             };
         }
 
@@ -21,7 +21,7 @@ exports.log = async (data, res) => {
         if (!user) {
             throw {
                 code: 401,
-                message: "Identifiants invalides."
+                message: "Wrong user"
               };
         }
 
@@ -29,7 +29,7 @@ exports.log = async (data, res) => {
         if (!isValidPassword) {
             throw {
                 code: 401,
-                message: "Identifiants invalides."
+                message: "Wrong password"
               };
         }
 
@@ -42,10 +42,14 @@ exports.log = async (data, res) => {
     }
     catch (error) {
         console.error(error);
-        throw {
-            code: 500,
-            message: "Une erreur est survenue lors de la connexion."
-          };
+        if (error.code !== 500) {
+            throw error;
+        } else {
+            throw {
+                code: 500,
+                message: "Server error"
+              };
+        }
       }
 };
 
@@ -57,7 +61,7 @@ exports.register = async (data) => {
         if (!name || !email || !password) {
           throw {
             code: 400,
-            message: "Veuillez fournir tous les champs requis."
+            message: "Please provide all fields."
           };
         }
 
@@ -78,9 +82,13 @@ exports.register = async (data) => {
       }
       catch (error) {
         console.error(error);
-        throw {
-            code: 500,
-            message: "Une erreur est survenue lors de la création de l'utilisateur"
-          };
+          if (error.code !== 500) {
+              throw error;
+          } else {
+              throw {
+                  code: 500,
+                  message: "Server error"
+              };
+          }
       }
 }
