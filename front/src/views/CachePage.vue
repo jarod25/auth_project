@@ -1,7 +1,7 @@
 <template>
   
   <div>
-    <h1>Page de cache</h1>
+    <h1>Caching page</h1>
     <p>{{ message }}</p>
   </div>
 

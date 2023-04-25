@@ -98,10 +98,10 @@ app.get("/races", async (req, res) => {
 // Connexion à la base de données
 db.authenticate()
   .then(() => {
-    console.log("Connexion à la base de données établie");
+    console.log("Database connected successfully");
   })
   .catch((err) => {
-    console.log("Erreur de connexion à la base de données:", err);
+    console.log("Database connecting error", err);
   });
 
 io.on("connection", (socket) => {
@@ -125,7 +125,7 @@ const cacheMiddleware = require("./middleware/cache.middleware.js");
 // temps = 10 secondes de mise en cache
 app.get("/cache", cacheMiddleware(10), (req, res) => {
   const timestamp = new Date().toLocaleTimeString();
-  res.send(`La requête GET en cache ( 10 sec ) : ${timestamp}`);
+  res.send(`The cached GET request (10 sec): ${timestamp}`);
 });
 
 console.log(

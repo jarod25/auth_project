@@ -15,7 +15,7 @@ export default {
                 callback: this.handleCallbackResponse,
             });
         } else {
-            console.log("La bibliothèque Google n'est pas chargée");
+            console.log("Google lib not loaded, verify your config");
         }
     },
     mounted() {
@@ -23,7 +23,7 @@ export default {
             document.getElementById("googleButton"),
             {
                 theme: "filled_blue",
-                text: "login with google",
+                text: "login_with_google",
                 size: "large",
                 shape: "rectangular",
                 logo_alignment: "left",

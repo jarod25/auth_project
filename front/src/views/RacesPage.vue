@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center">Liste des courses de Formule 1</h1>
+    <h1 class="text-center">List of Formula 1 races</h1>
     <div class="row">
       <div class="col1-" v-for="(season, index) in seasons" :key="index">
         <h2 class="text-center">{{ season.season }}</h2>
@@ -13,7 +13,7 @@
             <img
               :src="race.circuitImage"
               class="card-img-top"
-              alt="Image du circuit"
+              alt="Circuit picture"
             />
             <div class="card-body">
               <h5 class="card-title">{{ race.name }}</h5>
@@ -22,7 +22,7 @@
               </p>
               <p class="card-text mb-0">
                 <small class="text-muted">{{
-                  new Date(race.date).toLocaleDateString("fr-FR", {
+                  new Date(race.date).toLocaleDateString("en-EN", {
                     day: "numeric",
                     month: "long",
                     year: "numeric",
