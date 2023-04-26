@@ -14,7 +14,7 @@ describe("Auth", () => {
         })
         .expect(200);
 
-      // assert.notEqual(res.body.token, null);
+      assert.notEqual(res.body.token, null);
     });
 
     it("should return an error if user already exists", async () => {
@@ -25,9 +25,9 @@ describe("Auth", () => {
           email: "john.doe@example.com",
           password: "password",
         })
-        .expect(400);
+        .expect(409);
 
-      // assert(res.body.error != null);
+      assert(res.body.error != null);
     });
   });
 
