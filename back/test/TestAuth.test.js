@@ -6,7 +6,8 @@ const User = require("../models/user.model.js");
 // ajoute un utilisateur à la base de données
 // avant de lancer les tests
 before(async () => {
-  await User.destroy({ where: {} });
+  // supprime que l'utilsateur  john6.doe@example.com de la bdd
+  await User.destroy({ where: { email: "john6.doe@example.com" } });
   await request(server).post("/auth/signup").send({
     name: "John Doe",
     email: "john.doe@example.com",
