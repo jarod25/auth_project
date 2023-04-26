@@ -1,6 +1,18 @@
 const assert = require("assert");
 const request = require("supertest");
 const server = require("../index.js"); // Importer votre fichier index ici
+const User = require("../models/user.model.js");
+// supprime les utilisateurs de la base de données
+// ajoute un utilisateur à la base de données
+// avant de lancer les tests
+before(async () => {
+  await User.destroy({ where: {} });
+  await request(server).post("/auth/signup").send({
+    name: "John Doe",
+    email: "john.doe@example.com",
+    password: "password",
+  });
+});
 
 describe("Auth", () => {
   describe("POST /auth/signup", () => {
@@ -8,7 +20,7 @@ describe("Auth", () => {
       const res = await request(server) // Utiliser l'objet server ici
         .post("/auth/signup")
         .send({
-          name: "John Doe5",
+          name: "John Doe6",
           email: "john6.doe@example.com",
           password: "password",
         })
