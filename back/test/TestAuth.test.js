@@ -2,12 +2,11 @@ const assert = require("assert");
 const request = require("supertest");
 const server = require("../index.js"); // Importer votre fichier index ici
 const User = require("../models/user.model.js");
-// supprime les utilisateurs de la base de données
-// ajoute un utilisateur à la base de données
-// avant de lancer les tests
+
 before(async () => {
   // supprime que l'utilsateur  john6.doe@example.com de la bdd
   await User.destroy({ where: { email: "john6.doe@example.com" } });
+  // ajoute un utilisateur à la base de données
   await request(server).post("/auth/signup").send({
     name: "John Doe",
     email: "john.doe@example.com",
