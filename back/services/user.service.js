@@ -15,4 +15,8 @@ async function getUserByEmail(userEmail) {
     return await User.findByPk(userEmail);
 }
 
-module.exports = { createUser, getUserByEmail };
+async function deleteUser(userEmail) {
+    return await User.destroy({ where: { email: userEmail } });
+}
+
+module.exports = { createUser, getUserByEmail, deleteUser };

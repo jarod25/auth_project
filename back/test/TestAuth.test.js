@@ -3,6 +3,7 @@ const request = require("supertest");
 
 const server = require("../index.js");
 const sequelize = require("../config/db.js");
+const { deleteUser } = require("../services/user.service.js");
 
 const goodUser = [{
   name: "John Doe5",
@@ -29,7 +30,7 @@ const badUser = [{
 }];
 
 before(async () => {
-  await sequelize.sync({ alter: true, force: true });
+  await deleteUser(goodUser[0].email);
 });
 
 describe("Auth", () => {
@@ -110,8 +111,4 @@ describe("Auth", () => {
         .expect(401);
     });
   });
-});
-
-after(async () => {
-  await sequelize.sync({ alter: true, force: true });
 });
