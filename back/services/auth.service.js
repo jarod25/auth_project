@@ -1,6 +1,6 @@
-const User = require('../models/user.model');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { createUser, getUserByEmail } = require('./user.service');
 require("dotenv").config();
 
 var secret = process.env.JWT_SECRET; // Remplacer par votre clé secrète
@@ -16,7 +16,7 @@ exports.log = async (data) => {
             };
         }
 
-        const user = await User.findByPk(email);
+        const user = await getUserByEmail(email);
 
         if (!user) {
             throw {
@@ -64,7 +64,7 @@ exports.register = async (data) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         // Check if user with the same email already exists
-        const existingUser = await User.findOne({ where: { email } });
+        const existingUser = await getUserByEmail(email);
         if (existingUser) {
             throw {
                 code: 409,
@@ -72,7 +72,12 @@ exports.register = async (data) => {
             };
         }
 
-        const user = await User.create({ name, email, password: hashedPassword });
+        const userData = {
+            name: name,
+            email: email,
+            password: hashedPassword
+        }
+        const user = await createUser(userData);
 
         return jwt.sign({ name: user.name, email: user.email }, secret);
     }

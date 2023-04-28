@@ -8,7 +8,6 @@ const hpp = require("hpp");
 require("dotenv").config();
 
 const authRouter = require("./router/auth.router");
-const userRouter = require("./router/user.router");
 const f1 = require("./BigData/f1");
 const db = require("./config/db");
 const rateLimit = require("express-rate-limit");
@@ -64,7 +63,6 @@ app.use(limiter);
 app.use(hpp());
 
 app.use("/auth", authRouter);
-app.use("/user", userRouter);
 
 // Github
 

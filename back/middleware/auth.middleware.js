@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
 require("dotenv").config();
-const User = require("../models/user.model");
 const jwt_decode = require("jwt-decode");
+const { getUserByEmail } = require("../services/user.service");
 
 const verifyGitHubToken = async (token) => {
   try {
@@ -28,7 +28,7 @@ const protect = async (req, res, next) => {
 
     if (token.startsWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.")) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const user = await User.findByPk(decoded.email);
+      const user = await getUserByEmail(decoded.email);
       if (!user) {
         return res.status(401).json({ message: "User not found" });
       }

@@ -2,7 +2,7 @@ const assert = require("assert");
 const request = require("supertest");
 
 const server = require("../index.js");
-const { createDB } = require("../config/createDB.js");
+const sequelize = require("../config/db.js");
 
 const goodUser = [{
   name: "John Doe5",
@@ -29,7 +29,7 @@ const badUser = [{
 }];
 
 before(async () => {
-  await createDB();
+  await sequelize.sync({ alter: true, force: true });
 });
 
 describe("Auth", () => {
@@ -113,5 +113,5 @@ describe("Auth", () => {
 });
 
 after(async () => {
-  await createDB();
+  await sequelize.sync({ alter: true, force: true });
 });
