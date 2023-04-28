@@ -22,8 +22,9 @@
    <br>**Attention** : Vous devez avoir installé git sur votre machine pour pouvoir cloner le projet et avoir un compte GitHub pour pouvoir cloner le projet en ssh
    <br><br>
 2. Assurez vous d'avoir installé Node.js v16.14.x minimum, npm v9.6.5 et vuejs v5.0.8 minimum sur votre machine
-3. Installez les dépendances en utilisant la commande suivante : `npm install` (à faire dans le dossier 'back' et dans le dossier 'front')
-4. Démarrez le serveur en utilisant les commande suivante : `npm start` pour le back, `npm run serve` pour le front
+3. N'oubliez pas de créer et compléter le fichier .env avec vos informations à partir du fichier `sample.env`
+4. Installez les dépendances en utilisant la commande suivante : `npm install` (à faire dans le dossier 'back' et dans le dossier 'front')
+5. Démarrez le serveur en utilisant les commande suivante : `npm start` pour le back, `npm run serve` pour le front
 
 ## Utilisation
 
