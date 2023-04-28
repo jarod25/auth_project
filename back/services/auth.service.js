@@ -12,7 +12,7 @@ exports.log = async (data) => {
         if (!email || !password) {
             throw {
                 code: 400,
-                message: "Veuillez fournir tous les champs requis."
+                message: "Missing fields"
             };
         }
 
@@ -21,7 +21,7 @@ exports.log = async (data) => {
         if (!user) {
             throw {
                 code: 401,
-                message: "Identifiants invalides."
+                message: "Invalide email"
             };
         }
 
@@ -29,7 +29,7 @@ exports.log = async (data) => {
         if (!isValidPassword) {
             throw {
                 code: 401,
-                message: "Identifiants invalides."
+                message: "Invalide password"
             };
         }
 
@@ -44,7 +44,7 @@ exports.log = async (data) => {
         if (typeof error === 'object') throw error;
         throw {
             code: 500,
-            message: "Une erreur est survenue lors de la connexion."
+            message: "An error occurred during the connection."
         };
     }
 };
@@ -57,7 +57,7 @@ exports.register = async (data) => {
         if (!name || !email || !password) {
             throw {
                 code: 400,
-                message: "Veuillez fournir tous les champs requis."
+                message: "Missing fields"
             };
         }
 
@@ -85,7 +85,7 @@ exports.register = async (data) => {
         if (typeof error === 'object') throw error;
         throw {
             code: 500,
-            message: "Une erreur est survenue lors de la création de l'utilisateur"
+            message: "An error occurred while creating the user"
         };
     }
 };
