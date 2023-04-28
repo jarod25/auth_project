@@ -2,7 +2,6 @@ const assert = require("assert");
 const request = require("supertest");
 
 const server = require("../index.js");
-const sequelize = require("../config/db.js");
 const { deleteUser } = require("../services/user.service.js");
 
 const goodUser = [{
