@@ -14,14 +14,14 @@ export default new Vuex.Store({
   },
   mutations: {
     setUser(state, user) {
-        state.user = user
+      state.user = user
     },
     setToken(state, token) {
       state.token = token;
     }
   },
   actions: {
-    signUp({commit}, user) {
+    signUp({ commit }, user) {
       return fetch('http://localhost:3000/auth/signup', {
 
         method: 'POST', headers: {
@@ -31,12 +31,12 @@ export default new Vuex.Store({
           password: user.password,
         })
       })
-          .then(response => response.json())
-          .then(response => {
-            commit('setUser', "toto")
-            return response
-          })
-          .catch(error => console.error('Error:', error))
+        .then(response => response.json())
+        .then(response => {
+          commit('setUser', "toto")
+          return response
+        })
+        .catch(error => console.error('Error:', error))
     },
   }
 })

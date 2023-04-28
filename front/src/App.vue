@@ -1,11 +1,11 @@
 <template>
   <div>
-      <NavBarComponent />
-      <div class="container">
-          <div class="row">
-              <router-view />
-          </div>
+    <NavBarComponent />
+    <div class="container">
+      <div class="row">
+        <router-view />
       </div>
+    </div>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import NavBarComponent from "@/components/NavBarComponent.vue";
 export default {
   name: "App",
-    components: {NavBarComponent},
+  components: { NavBarComponent },
 };
 </script>
 

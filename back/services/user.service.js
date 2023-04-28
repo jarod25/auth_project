@@ -4,7 +4,15 @@ require('dotenv').config();
 
 // Fonction pour créer un utilisateur
 async function createUser(userData) {
-    return await User.create(userData);
+    try {
+        return await User.create({
+            name: userData.name,
+            email: userData.email,
+            password: userData.password
+        });
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 // Fonction pour obtenir un utilisateur par son ID

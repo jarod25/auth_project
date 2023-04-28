@@ -25,10 +25,10 @@ export default {
 
   mounted() {
     this.socket = io("http://localhost:3000"); // Assignation de la propriété socket
-    if (this.$store.state.user){
-        this.socket.on("connect", () => {
-            this.socket.emit("message", "Hello " + this.$store.state.user.name);
-        });
+    if (this.$store.state.user) {
+      this.socket.on("connect", () => {
+        this.socket.emit("message", "Hello " + this.$store.state.user.name);
+      });
     }
     this.socket.on("message", (data) => {
       this.messages.push(data);

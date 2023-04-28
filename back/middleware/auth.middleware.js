@@ -6,7 +6,7 @@ const jwt_decode = require("jwt-decode");
 
 const verifyGitHubToken = async (token) => {
   try {
-    const response = await axios.get("https://api.github.com/user", {
+    await axios.get("https://api.github.com/user", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,12 +53,12 @@ const protect = async (req, res, next) => {
       };
       next();
     } else if (token.startsWith("eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg2OTY5YWVjMzdhNzc4MGYxODgwNzg3NzU5M2JiYmY4Y2Y1ZGU1Y2UiLCJ0eXAiOiJKV1QifQ.")) {
-        const decoded = jwt_decode(token);
-        req.user = {
-            name: decoded.name,
-            email: decoded.email
-        }
-        next();
+      const decoded = jwt_decode(token);
+      req.user = {
+        name: decoded.name,
+        email: decoded.email
+      }
+      next();
     }
     else {
       return res.status(401).json({ message: "Invalid token" });

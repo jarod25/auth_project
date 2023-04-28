@@ -1,6 +1,5 @@
 const sequelize = require('./db');
 
-sequelize.sync({ alter: true, force: false })
-    .then(() => {
-        console.log('Tables created');
-    });
+exports.createDB = async () => {
+    await sequelize.sync({ alter: true, force: true });
+}

@@ -5,9 +5,9 @@
         <v-card-title class="login-title"> Login </v-card-title>
         <v-form @submit.prevent="handleSubmit">
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" autocomplete/> <br />
+          <input type="email" id="email" v-model="email" autocomplete /> <br />
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" autocomplete/>
+          <input type="password" id="password" v-model="password" autocomplete />
           <br />
           <v-btn type="submit">Login</v-btn>
         </v-form>
@@ -33,7 +33,7 @@ import GoogleComponent from "@/components/GoogleComponent.vue";
 import GithubComponent from "@/components/GithubComponent.vue";
 
 export default {
-    components: {GithubComponent, GoogleComponent},
+  components: { GithubComponent, GoogleComponent },
   data() {
     return {
       email: "",
@@ -65,7 +65,7 @@ export default {
             this.errorMessage = "Too many attempts, please try again later";
           }
           else if (error.response && error.response.status === 400) {
-              this.errorMessage = "Please fill all the fields";
+            this.errorMessage = "Please fill all the fields";
           }
           else if (error.response && error.response.status === 401) {
             this.errorMessage = "Wrong email or password";
@@ -131,6 +131,7 @@ input {
   border: 1px solid;
   border-radius: 0.25rem;
 }
+
 .alert-danger {
   color: #842029;
   background-color: #f5c2c7;

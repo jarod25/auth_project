@@ -1,29 +1,30 @@
 <template>
   <div class="navbar">
     <div class="navbar__logo">
-        <router-link to="/">
-      <img src="../assets/logo.png" alt="logo"/>
-        </router-link>
+      <router-link to="/">
+        <img src="../assets/logo.png" alt="logo" />
+      </router-link>
     </div>
-      <div class="navbar__menu">
-        <ul>
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/cache">Cache</router-link></li>
-            <li><router-link to="/races">Races F1</router-link></li>
-            <li><router-link to="/socket">Socket</router-link></li>
-        </ul>
+    <div class="navbar__menu">
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/cache">Cache</router-link></li>
+        <li><router-link to="/races">Races F1</router-link></li>
+        <li><router-link to="/socket">Socket</router-link></li>
+      </ul>
     </div>
     <div v-if="logged" class="navbar__menu">
-        <ul>
-            <li><router-link to="/protected">Protected</router-link></li>
-            <li><v-btn style="background-color: #333333;" variant="text" class="text-white" @click="logout">Logout</v-btn></li>
-        </ul>
+      <ul>
+        <li><router-link to="/protected">Protected</router-link></li>
+        <li><v-btn style="background-color: #333333;" variant="text" class="text-white" @click="logout">Logout</v-btn>
+        </li>
+      </ul>
     </div>
     <div v-else class="navbar__menu">
-        <ul>
-            <li><router-link to="/login">Login </router-link></li>
-            <li><router-link to="/signup"> Signup</router-link></li>
-        </ul>
+      <ul>
+        <li><router-link to="/login">Login </router-link></li>
+        <li><router-link to="/signup"> Signup</router-link></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -31,29 +32,29 @@
 <script>
 export default {
   name: "NavBarComponent.vue",
-    data() {
-        return {
-            logged : false,
-        };
+  data() {
+    return {
+      logged: false,
+    };
+  },
+  methods: {
+    isLogged() {
+      this.logged = !!localStorage.getItem("token");
     },
-    methods: {
-      isLogged() {
-        this.logged = !!localStorage.getItem("token");
-      },
-        logout() {
-            localStorage.removeItem("token");
-            this.$store.state.user = null;
-            this.$router.push("/");
-        },
+    logout() {
+      localStorage.removeItem("token");
+      this.$store.state.user = null;
+      this.$router.push("/");
     },
-    mounted() {
-        this.isLogged();
+  },
+  mounted() {
+    this.isLogged();
+  },
+  watch: {
+    $route() {
+      this.isLogged();
     },
-    watch: {
-        $route() {
-            this.isLogged();
-        },
-    },
+  },
 
 };
 </script>

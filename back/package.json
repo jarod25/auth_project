@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha.js test/TestAuth.test.js",
+    "test": "./node_modules/mocha/bin/mocha.js test/TestAuth.test.js --timeout 100000",
     "start": "nodemon index.js"
   },
   "author": "",

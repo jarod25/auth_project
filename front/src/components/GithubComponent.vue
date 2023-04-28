@@ -12,7 +12,7 @@ export default {
         const params = new URLSearchParams(url);
         const code = params.get("code");
         if (code && (localStorage.getItem("token") === null)) {
-          this.getAccessToken(code);
+            this.getAccessToken(code);
         }
     },
     data() {
@@ -45,10 +45,10 @@ export default {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 }
             })
-            .then((response) => response.json())
-            .then(() => {
-                this.$router.push("/protected");
-            });
+                .then((response) => response.json())
+                .then(() => {
+                    this.$router.push("/protected");
+                });
         }
     },
     mounted() {
@@ -74,5 +74,4 @@ export default {
 .btn-github:hover {
     background-color: rgb(77, 59, 225);
 }
-
 </style>
